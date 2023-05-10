@@ -9,6 +9,8 @@ public class movimientoJugador : MonoBehaviour
 
     [Header("Movimiento")]
 
+    private float inputX;
+
     private float movimientoHorizontal = 0f;
 
     [SerializeField] private float velocidadDeMovimiento;
@@ -16,6 +18,7 @@ public class movimientoJugador : MonoBehaviour
     private Vector3 velociad = Vector3.zero;
     private bool mirandoDerecha = true;
 
+    
 
     [Header("Salto")]
 
@@ -26,6 +29,13 @@ public class movimientoJugador : MonoBehaviour
     [SerializeField] private bool enSuelo;
     private bool salto = false;
 
+    [Header("SaltoPared")]
+    [SerializeField] private Transform controladorPared;
+    [SerializeField] private Vector3 dimensionesCajaPared;
+    private bool enPared;
+    private bool deslizando;
+    [SerializeField] private float velocidadDeslizar;
+
 
     [Header("animacion")]
 
@@ -35,24 +45,39 @@ public class movimientoJugador : MonoBehaviour
 
     private void Start()
     {
-      rb2D = GetComponent<Rigidbody2D>();  
+        rb2D = GetComponent<Rigidbody2D>();  
         animator = GetComponent<Animator>();
     }
 
     private void Update()
     {
-        movimientoHorizontal = Input.GetAxisRaw("Horizontal") * velocidadDeMovimiento;
+        inputX = Input.GetAxisRaw("Horizontal");
+        movimientoHorizontal = inputX * velocidadDeMovimiento;
 
         animator.SetFloat("Horizontal", Mathf.Abs (movimientoHorizontal));
 
         animator.SetFloat("VelocidadY", rb2D.velocity.y);
+
+        animator.SetBool("Deslizando", deslizando);
 
         if(Input.GetButtonDown("Jump"))
         {
             salto = true;
             
         }
+
+        if(!enSuelo && enPared && inputX != 0)
+        {
+            deslizando = true;
+        }
+        else
+        {
+            deslizando = false;
+        }
+
+        
     }
+
 
     private void FixedUpdate()
     {
@@ -60,11 +85,15 @@ public class movimientoJugador : MonoBehaviour
 
         animator.SetBool("enSuelo", enSuelo);
 
-        
-
+        enPared = Physics2D.OverlapBox(controladorPared.position, dimensionesCajaPared, 0f, queEsSuelo);
         Mover(movimientoHorizontal *Time.deltaTime, salto);
 
         salto = false;
+
+        if(deslizando)
+        {
+            rb2D.velocity = new Vector2(rb2D.velocity.x, Mathf.Clamp(rb2D.velocity.y, -velocidadDeslizar, float.MaxValue));
+        }
     }
 
     private void Mover(float mover, bool saltar)
@@ -100,6 +129,7 @@ public class movimientoJugador : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireCube(controladorSuelo.position, dimensionesCaja); 
+        Gizmos.DrawWireCube(controladorSuelo.position, dimensionesCaja);
+        Gizmos.DrawWireCube(controladorPared.position, dimensionesCajaPared);
     }
 }
