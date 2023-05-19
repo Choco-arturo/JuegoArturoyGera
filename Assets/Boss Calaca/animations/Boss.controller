@@ -7,7 +7,10 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 6
+    m_ConditionEvent: numeroAleatorio
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 995381537488150255}
   m_Solo: 0
@@ -190,7 +193,10 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 6
+    m_ConditionEvent: numeroAleatorio
+    m_EventTreshold: 1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2428631124848500704}
   m_Solo: 0
@@ -252,6 +258,18 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &-165722833972276384
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be0a0f8f618789c47ad4a60cb391d127, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!91 &9100000
 AnimatorController:
   m_ObjectHideFlags: 0
@@ -269,6 +287,12 @@ AnimatorController:
     m_Controller: {fileID: 9100000}
   - m_Name: distanciaJugador
     m_Type: 1
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: numeroAleatorio
+    m_Type: 3
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
@@ -381,7 +405,8 @@ AnimatorState:
   m_Transitions:
   - {fileID: -2342814385282616978}
   - {fileID: -8837661816136536411}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: -165722833972276384}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -408,7 +433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a806de7e35bfd84d916b8b4ced5d178, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velociadDeMovimiento: 5
+  velociadDeMovimiento: 2
 --- !u!114 &8107406140002891365
 MonoBehaviour:
   m_ObjectHideFlags: 1
