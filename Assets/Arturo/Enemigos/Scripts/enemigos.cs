@@ -11,7 +11,7 @@ public class enemigos : MonoBehaviour, IDano
 
     [Header("Vida")]
     [SerializeField] private float vida;
-    [SerializeField] private BarraDevida barraDeVida;
+    //[SerializeField] private BarraDevida barraDeVida;
 
     [Header("Ataque")]
     [SerializeField] private Transform controladorAtaque;
@@ -24,17 +24,17 @@ public class enemigos : MonoBehaviour, IDano
     { 
         animator = GetComponent<Animator>();
         rb2D = GetComponent<Rigidbody2D>();
-        barraDeVida.InicializarBarraDeVida(vida);
+        //barraDeVida.InicializarBarraDeVida(vida);
         jugador = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
     private void Update()
     {
-        
-        
-        float distanciaJugador = Vector2.Distance(transform.position, jugador.position);
-        animator.SetFloat("distanciaJugador", distanciaJugador);
-        
+        if(jugador != null)
+        {
+            float distanciaJugador = Vector2.Distance(transform.position, jugador.position);
+            animator.SetFloat("distanciaJugador", distanciaJugador);
+        }
         
         
     }
@@ -42,7 +42,7 @@ public class enemigos : MonoBehaviour, IDano
     public void TomarDano(float dano)
     {
         vida -= dano;
-        barraDeVida.CambiarVidaActual(vida);
+        //barraDeVida.CambiarVidaActual(vida);
 
         if (vida <= 0)
         {

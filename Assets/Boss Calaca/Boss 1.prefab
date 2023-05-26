@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2D: {fileID: 0}
-  jugador: {fileID: 0}
+  jugador: {fileID: 4702778205100809077, guid: 461d9113572de1745a1ada03fe2e6894, type: 3}
   mirandoDerecha: 1
   vida: 100
   barraDeVida: {fileID: 0}
