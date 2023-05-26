@@ -19,13 +19,16 @@ public class EnemySpawnerScript : MonoBehaviour
 
     void SpawnEnemies()
     {
-        Vector3 spawnPosition = transform.position; // Utiliza la posición del objeto "EnemySpawner" como referencia de generación
+        Vector2 spawnPosition = transform.position;
 
         for (int i = 0; i < numberOfEnemies; i++)
         {
             Vector2 randomOffset = Random.insideUnitCircle * spawnRadius;
-            Vector3 enemyPosition = spawnPosition + new Vector3(randomOffset.x, randomOffset.y, 0);
+            Vector2 enemyPosition = spawnPosition + new Vector2(randomOffset.x, randomOffset.y);
             Instantiate(enemyPrefab, enemyPosition, Quaternion.identity);
+            //Vector2 randomPosition = Random.insideUnitCircle * spawnRadius;
+            //Instantiate(enemyPrefab, randomPosition, Quaternion.identity);
         }
+
     }
 }
