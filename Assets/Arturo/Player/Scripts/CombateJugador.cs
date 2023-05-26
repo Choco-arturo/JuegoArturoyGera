@@ -15,21 +15,4 @@ public class CombateJugador : MonoBehaviour
         }
     }
     
-    //--------------------------------------------------------------//
-
-    /*private DeathPanelScript deathCanvas;
-
-    void Start()
-    {
-        deathCanvas = GameObject.Find("DeathCanvas").GetComponent<DeathPanelScript>();
-    }
-
-    void Update()
-    {
-
-        if (vida <= 0)
-        {
-            deathCanvas.DeathPanel.SetActive(true);
-        }
-    }*/
 }

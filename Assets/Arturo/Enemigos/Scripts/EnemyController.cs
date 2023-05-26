@@ -8,7 +8,6 @@ public class EnemyController : MonoBehaviour, IDano
     private Animator animator;
     public Transform jugador;
     public bool mirandoDerecha = true;
-    [SerializeField] private Transform rangoAtaqueObjeto;
 
     private void Start()
     {
@@ -20,6 +19,27 @@ public class EnemyController : MonoBehaviour, IDano
     {
         float distanciaJugador = Vector2.Distance(transform.position, jugador.position);
         animator.SetFloat("distanciaJugador", distanciaJugador);
+
+        //if (distanciaJugador <= enemyData.distanciaAtaque)
+       // {
+            //MoverHaciaJugador();
+        //}
+    }
+
+    private void MoverHaciaJugador()
+    {
+        float direccion = Mathf.Sign(jugador.position.x - transform.position.x);
+
+        if (direccion > 0 && !mirandoDerecha)
+        {
+            Girar();
+        }
+        else if (direccion < 0 && mirandoDerecha)
+        {
+            Girar();
+        }
+
+        //transform.position = Vector2.MoveTowards(transform.position, jugador.position, enemyData.velocidadMovimiento * Time.deltaTime);
     }
 
     public void TomarDano(float dano)
@@ -37,18 +57,15 @@ public class EnemyController : MonoBehaviour, IDano
         Destroy(gameObject);
     }
 
-    public void MirarJugador()
+    public void Girar()
     {
-        if ((jugador.position.x > transform.position.x && !mirandoDerecha) || (jugador.position.x < transform.position.x && mirandoDerecha))
-        {
-            mirandoDerecha = !mirandoDerecha;
-            transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + 180, 0);
-        }
+        mirandoDerecha = !mirandoDerecha;
+        transform.Rotate(0f, 180f, 0f);
     }
 
     public void Ataque()
     {
-        Collider2D[] objetos = Physics2D.OverlapCircleAll(rangoAtaqueObjeto.position, enemyData.radioAtaque);
+        Collider2D[] objetos = Physics2D.OverlapCircleAll(transform.position, enemyData.radioAtaque);
         foreach (Collider2D colision in objetos)
         {
             colision.GetComponent<CombateJugador>().TomarDano(enemyData.danoAtaque);
@@ -58,6 +75,6 @@ public class EnemyController : MonoBehaviour, IDano
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(rangoAtaqueObjeto.position, enemyData.radioAtaque);
+        Gizmos.DrawWireSphere(transform.position, enemyData.radioAtaque);
     }
 }
