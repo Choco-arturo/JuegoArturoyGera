@@ -174,7 +174,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 2
   m_Sprite: {fileID: 1248956927, guid: cc03908765633284ab6ea565bbe7e1e4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -245,9 +245,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1509f4c17e1bfaa4d82b0183fb7ebe77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidadDeMovimiento: 400
+  velocidadDeMovimiento: 500
   suavizadorDeMovimeinto: 0.016
-  fuerzaDeSalto: 400
+  fuerzaDeSalto: 700
   queEsSuelo:
     serializedVersion: 2
     m_Bits: 64
