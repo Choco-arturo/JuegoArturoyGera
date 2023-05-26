@@ -45661,6 +45661,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 918304493332745452, guid: bf07defd8ed03d0448cbfa2de66c939d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 918304493332745452, guid: bf07defd8ed03d0448cbfa2de66c939d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 918304493332745452, guid: bf07defd8ed03d0448cbfa2de66c939d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1840037855}
+    - target: {fileID: 918304493332745452, guid: bf07defd8ed03d0448cbfa2de66c939d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 918304493332745452, guid: bf07defd8ed03d0448cbfa2de66c939d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ReturnMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 918304493332745452, guid: bf07defd8ed03d0448cbfa2de66c939d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PauseMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 918304493332745452, guid: bf07defd8ed03d0448cbfa2de66c939d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 918304494207838160, guid: bf07defd8ed03d0448cbfa2de66c939d, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -53767,7 +53795,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 3500020788302414385, guid: 3a63f0cee080a4848bf5d32a0e5d7114, type: 3}
-  numberOfEnemies: 100
+  numberOfEnemies: 10
   spawnRadius: 70
 --- !u!4 &1708809198
 Transform:
@@ -53777,7 +53805,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1708809196}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 104.5, y: 70.2, z: -10.051641}
+  m_LocalPosition: {x: 104.5, y: 78.9, z: -10.051641}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
