@@ -7,11 +7,14 @@ public class DeathPanelScript : MonoBehaviour
     public GameObject deathPanel;
     public Button restartButton;
     public CombateJugador combateJugador;
+    public AudioClip gameOverMusic;
+    private AudioSource audioSource;
 
     void Start()
     {
         deathPanel.SetActive(false);
         restartButton.onClick.AddListener(RestartLevel);
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -19,6 +22,7 @@ public class DeathPanelScript : MonoBehaviour
         if (combateJugador.vida <= 0)
         {
             ShowDeathPanel();
+            
         }
     }
 
@@ -30,5 +34,11 @@ public class DeathPanelScript : MonoBehaviour
     public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void PlayGameOverMusic()
+    {
+        audioSource.clip = gameOverMusic;
+        audioSource.Play();
     }
 }

@@ -8,6 +8,7 @@ public class WinTriggerScript : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            Destroy(other.gameObject);
             winPanel.SetActive(true);
         }
     }
