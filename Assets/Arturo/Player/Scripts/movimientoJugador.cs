@@ -29,6 +29,9 @@ public class movimientoJugador : MonoBehaviour
     [SerializeField] private bool enSuelo;
     private bool salto = false;
 
+    [Header("Rebote")]
+    [SerializeField] private float velocidadRebote;
+
     [Header("SaltoPared")]
     [SerializeField] private Transform controladorPared;
     [SerializeField] private Vector3 dimensionesCajaPared;
@@ -116,6 +119,11 @@ public class movimientoJugador : MonoBehaviour
             enSuelo= false;
             rb2D.AddForce(new Vector2(0f, fuerzaDeSalto));
         }
+    }
+
+    public void Rebote()
+    {
+        rb2D.velocity = new Vector2(rb2D.velocity.x, velocidadRebote);
     }
 
     private void Girar()
