@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Jefe : MonoBehaviour
+public class Jefe : MonoBehaviour, IDano
 {
     private Animator animator;
     public Rigidbody2D rb2D;
@@ -32,6 +32,7 @@ public class Jefe : MonoBehaviour
     {
         float distanciaJugador = Vector2.Distance(transform.position, jugador.position);
         animator.SetFloat("distanciaJugador", distanciaJugador);
+
     }
 
     public void TomarDano(float dano)

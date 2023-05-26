@@ -40,10 +40,10 @@ public class CombateCaC : MonoBehaviour
 
         foreach(Collider2D colisionador in objetos)
         {
-            if(colisionador.CompareTag("Enemigo"))
+            IDano objeto = colisionador.GetComponent<IDano>();
+            if(objeto != null)
             {
-                colisionador.transform.GetComponent<Jefe>().TomarDano(danoGolpe);
-
+                objeto.TomarDano(danoGolpe);
             }
             
         }

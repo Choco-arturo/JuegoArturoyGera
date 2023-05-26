@@ -6,7 +6,10 @@ public class EnemigoVolador : MonoBehaviour
 {
 
     [SerializeField] private GameObject efecto;
-    
+
+    [Header("Vida")]
+    [SerializeField] private float vida;
+
     private Animator animator;
     
 
@@ -35,7 +38,6 @@ public class EnemigoVolador : MonoBehaviour
 
     public void Muerte()
     {
-        animator.SetTrigger("Golpe");
         Destroy(gameObject);
     }
 

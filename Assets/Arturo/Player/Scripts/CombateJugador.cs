@@ -14,7 +14,7 @@ public class CombateJugador : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+    
     //--------------------------------------------------------------//
 
     /*private DeathPanelScript deathCanvas;

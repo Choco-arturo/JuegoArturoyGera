@@ -2,19 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Jefe_CaminarBehaviour : StateMachineBehaviour
+public class enemigos_CaminarBehaviour : StateMachineBehaviour
 {
-    private Jefe jefe;
+    private enemigos enemigos;
     private Rigidbody2D rb2D;
     [SerializeField] private float velociadDeMovimiento;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
-        jefe = animator.GetComponent<Jefe>();
-        rb2D = jefe.rb2D;
-        jefe.MirarJugador();
+        enemigos = animator.GetComponent<enemigos>();
+        rb2D = enemigos.rb2D;
+        enemigos.MirarJugador();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
