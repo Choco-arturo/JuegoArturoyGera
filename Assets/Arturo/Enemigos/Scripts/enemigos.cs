@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemigos : MonoBehaviour, IDano
+public class enemigos : MonoBehaviour
 {
     private Animator animator;
     public Rigidbody2D rb2D;

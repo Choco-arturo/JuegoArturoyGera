@@ -9,6 +9,10 @@ public class EnemyData : ScriptableObject
     public float vida;
 
     [Header("Ataque")]
+    public float distanciaAtaque;
     public float radioAtaque;
     public float danoAtaque;
+
+    [Header("Movimiento")]
+    public float velocidadMovimiento;
 }

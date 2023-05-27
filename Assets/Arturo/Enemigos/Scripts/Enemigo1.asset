@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f03832f82db74649a7519f309880c7b, type: 3}
   m_Name: Enemigo1
   m_EditorClassIdentifier: 
-  vida: 0
+  vida: -160
+  distanciaAtaque: 5
   radioAtaque: 1.2
   danoAtaque: 20
+  velocidadMovimiento: 5
