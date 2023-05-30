@@ -2,7 +2,7 @@
     "name": "PlayerMap",
     "maps": [
         {
-            "name": "PlayerController",
+            "name": "PlayerBinding",
             "id": "b84ab42f-ce9a-43f1-9672-55dcb95f36a4",
             "actions": [
                 {
