@@ -1187,7 +1187,7 @@ GameObject:
   - component: {fileID: 916130370}
   - component: {fileID: 916130369}
   - component: {fileID: 916130368}
-  - component: {fileID: 916130371}
+  - component: {fileID: 916130367}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Enemigo
@@ -1255,7 +1255,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 916130360}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 45.64, y: 2.3, z: 0}
+  m_LocalPosition: {x: 45.23, y: 2.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1263,6 +1263,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &916130367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 916130360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e9884c89ba98b24d825c4ad116afa86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanciaDetectar: 5
+  distanciaAtaque: 3
+  radioAtaque: 1.2
+  danoAtaque: 20
+  velocidadMovimiento: 4
+  vida: 100
+  jugador: {fileID: 174259627}
+  controladorAtaque: {fileID: 1215212009}
+  rb2D: {fileID: 0}
 --- !u!61 &916130368
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1280,7 +1301,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.04, y: 2.68}
+    oldSize: {x: 1.2, y: 2.56}
     newSize: {x: 1.36, y: 2.52}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1330,27 +1351,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &916130371
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 916130360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72de4b416642e71479598854c22141b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  distanciaDetectar: 5
-  distanciaAtaque: 2
-  radioAtaque: 1.2
-  danoAtaque: 20
-  velocidadMovimiento: 5
-  vida: 100
-  jugador: {fileID: 174259627}
-  controladorAtaque: {fileID: 1215212009}
-  rb2D: {fileID: 0}
 --- !u!1 &1033408432
 GameObject:
   m_ObjectHideFlags: 0
@@ -18980,7 +18980,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1215212008}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.45, y: 0.19, z: 0}
+  m_LocalPosition: {x: 0.6, y: 0.19, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

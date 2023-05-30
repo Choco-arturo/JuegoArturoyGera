@@ -43,7 +43,7 @@ public class CombateCaC : MonoBehaviour
            
             if(colisionador.CompareTag("Enemigo"))
             {
-                colisionador.transform.GetComponent<Enemy>().TomarDano(danoGolpe);
+                colisionador.transform.GetComponent<EnemyController>().TakeDamage(danoGolpe);
             }
             
         }
