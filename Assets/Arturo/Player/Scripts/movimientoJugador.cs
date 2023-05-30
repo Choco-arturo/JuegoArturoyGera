@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class movimientoJugador : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class movimientoJugador : MonoBehaviour
 
     [SerializeField] private float velocidadDeMovimiento;
     [Range (0, 0.3f)] [SerializeField] private float suavizadorDeMovimeinto;
-    private Vector3 velociad = Vector3.zero;
+    private Vector2 velociad = Vector2.zero;
     private bool mirandoDerecha = true;
 
     
@@ -25,7 +26,7 @@ public class movimientoJugador : MonoBehaviour
     [SerializeField] private float fuerzaDeSalto;
     [SerializeField] private LayerMask queEsSuelo;
     [SerializeField] private Transform controladorSuelo;
-    [SerializeField] private Vector3 dimensionesCaja;
+    [SerializeField] private Vector2 dimensionesCaja;
     [SerializeField] private bool enSuelo;
     private bool salto = false;
 
@@ -34,7 +35,7 @@ public class movimientoJugador : MonoBehaviour
 
     [Header("SaltoPared")]
     [SerializeField] private Transform controladorPared;
-    [SerializeField] private Vector3 dimensionesCajaPared;
+    [SerializeField] private Vector2 dimensionesCajaPared;
     private bool enPared;
     private bool deslizando;
     [SerializeField] private float velocidadDeslizar;
@@ -44,32 +45,34 @@ public class movimientoJugador : MonoBehaviour
 
     private Animator animator;
 
+    public PlayerInput _playerInput;
 
-
-    private void Start()
+    void Start()
     {
+        _playerInput = GetComponent<PlayerInput>();
         rb2D = GetComponent<Rigidbody2D>();  
         animator = GetComponent<Animator>();
     }
 
-    private void Update()
+    void Update()
     {
         inputX = Input.GetAxisRaw("Horizontal");
         movimientoHorizontal = inputX * velocidadDeMovimiento;
 
-        animator.SetFloat("Horizontal", Mathf.Abs (movimientoHorizontal));
+        animator.SetFloat("Horizontal", Mathf.Abs(movimientoHorizontal));
 
         animator.SetFloat("VelocidadY", rb2D.velocity.y);
 
         animator.SetBool("Deslizando", deslizando);
 
-        if(Input.GetButtonDown("Jump"))
+
+        if (_playerInput.actions["Jump"].WasPressedThisFrame())
         {
             salto = true;
-            
+
         }
 
-        if(!enSuelo && enPared && inputX != 0)
+        if (!enSuelo && enPared && inputX != 0)
         {
             deslizando = true;
         }
@@ -101,8 +104,8 @@ public class movimientoJugador : MonoBehaviour
 
     private void Mover(float mover, bool saltar)
     {
-        Vector3 velocidadObjetivo = new Vector2(mover, rb2D.velocity.y);
-        rb2D.velocity = Vector3.SmoothDamp(rb2D.velocity, velocidadObjetivo, ref velociad, suavizadorDeMovimeinto);
+        Vector2 velocidadObjetivo = new Vector2(mover, rb2D.velocity.y);
+        rb2D.velocity = Vector2.SmoothDamp(rb2D.velocity, velocidadObjetivo, ref velociad, suavizadorDeMovimeinto);
 
         if(mover > 0 && !mirandoDerecha)
         {
@@ -129,7 +132,7 @@ public class movimientoJugador : MonoBehaviour
     private void Girar()
     {
         mirandoDerecha = !mirandoDerecha;
-        Vector3 escala = transform.localScale;
+        Vector2 escala = transform.localScale;
         escala.x *= -1;
         transform.localScale = escala;
     }

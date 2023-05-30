@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CombateCaC : MonoBehaviour
 {
@@ -12,19 +13,22 @@ public class CombateCaC : MonoBehaviour
 
     private Animator animator;
 
+    public PlayerInput _playerInput;
+
     private void Start()
     {
+        _playerInput = GetComponent<PlayerInput>();
         animator = GetComponent<Animator>();
     }
 
     private void Update()
     {
-        if(tiempoSiquienteAtaque> 0)
+        if (tiempoSiquienteAtaque > 0)
         {
             tiempoSiquienteAtaque -= Time.deltaTime;
         }
 
-        if(Input.GetButtonDown("Fire1"))
+        if (_playerInput.actions["Attack"].WasPressedThisFrame())
         {
             Golpe();
             tiempoSiquienteAtaque = tiempoEntreAtaque;
