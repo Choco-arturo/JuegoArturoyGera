@@ -22,7 +22,7 @@ public class EnemigoSimple : MonoBehaviour, IDano
     private void Update()
     {
         // Mover el enemigo en dirección al jugador
-        Vector3 direccion = (jugador.position - transform.position).normalized;
+        Vector2 direccion = (jugador.position - transform.position).normalized;
         transform.Translate(direccion * velocidadMovimiento * Time.deltaTime);
     }
 
