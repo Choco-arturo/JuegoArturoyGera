@@ -6,28 +6,54 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject PausePanel;
+    public AudioSource audioSource;
+    public AudioClip pauseSound;
+    public AudioClip unpauseSound;
+
+    private bool isPaused = false;
 
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (isPaused)
+                Unpause();
+            else
+                Pause();
+        }
     }
 
     public void Pause()
     {
-        PausePanel.SetActive(true);
-        Time.timeScale = 0;
+        if (!isPaused)
+        {
+            PausePanel.SetActive(true);
+            Time.timeScale = 0;
+            isPaused = true;
+
+            // Reproducir sonido de pausa
+            if (audioSource != null && pauseSound != null)
+                audioSource.PlayOneShot(pauseSound);
+        }
     }
 
-    public void Continue()
+    public void Unpause()
     {
-        PausePanel.SetActive(false);
-        Time.timeScale = 1;
+        if (isPaused)
+        {
+            PausePanel.SetActive(false);
+            Time.timeScale = 1;
+            isPaused = false;
+
+            // Reproducir sonido de despausa
+            if (audioSource != null && unpauseSound != null)
+                audioSource.PlayOneShot(unpauseSound);
+        }
     }
 
     public void ReturnMenu()
     {
-        PausePanel.SetActive(false);
-        Time.timeScale = 1;
+        Unpause();
         SceneManager.LoadScene(0);
     }
 }

@@ -15,6 +15,9 @@ public class CombateCaC : MonoBehaviour
 
     public PlayerInput _playerInput;
 
+    public AudioSource attackAudioSource;
+
+
     private void Start()
     {
         _playerInput = GetComponent<PlayerInput>();
@@ -38,6 +41,11 @@ public class CombateCaC : MonoBehaviour
 
     private void Golpe()
     {
+        if (attackAudioSource != null && attackAudioSource.clip != null)
+        {
+            attackAudioSource.PlayOneShot(attackAudioSource.clip);
+        }
+
         animator.SetTrigger("Golpe");
 
         Collider2D[] objetos = Physics2D.OverlapCircleAll(controladorGolpe.position, radiGolpe);

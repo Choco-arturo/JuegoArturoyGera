@@ -52,6 +52,9 @@ public class movimientoJugador : MonoBehaviour
     public AudioSource audioSource;
     private float stepTimer;
     private bool isMoving;
+    private Vector2 movement;
+
+    [SerializeField] private AudioSource jumpAudioSource;
 
     void Start()
     {
@@ -79,6 +82,8 @@ public class movimientoJugador : MonoBehaviour
         if (_playerInput.actions["Jump"].WasPressedThisFrame())
         {
             salto = true;
+            //jumpAudioSource.PlayOneShot(jumpAudioSource.clip);
+            //enSuelo = false;
 
         }
 
@@ -91,7 +96,7 @@ public class movimientoJugador : MonoBehaviour
             deslizando = false;
         }
 
-        stepTimer -= Time.deltaTime;
+        /*stepTimer -= Time.deltaTime;
 
         if (stepTimer <= 0f)
         {
@@ -102,6 +107,12 @@ public class movimientoJugador : MonoBehaviour
         {
             audioSource.Stop();
         }
+
+        //movement = _playerInput.actions["Move"].ReadValue<Vector2>();
+        //float moveHorizontal = movement.x * velocidadDeMovimiento;
+
+        isMoving = movement.magnitude > 0f;
+        */
 
 
     }
@@ -141,14 +152,18 @@ public class movimientoJugador : MonoBehaviour
 
         if(enSuelo && saltar)
         {
-            enSuelo= false;
+            if (jumpAudioSource != null && jumpAudioSource.clip != null)
+            {
+                jumpAudioSource.PlayOneShot(jumpAudioSource.clip);
+            }
+            enSuelo = false;
             rb2D.AddForce(new Vector2(0f, fuerzaDeSalto));
         }
 
-        if (mover != 0f)
+        /*if (mover != 0f)
         {
             PlayFootstepSound();
-        }
+        }*/
     }
 
     public void Rebote()
@@ -171,7 +186,7 @@ public class movimientoJugador : MonoBehaviour
         Gizmos.DrawWireCube(controladorPared.position, dimensionesCajaPared);
     }
 
-    private void PlayFootstepSound()
+    /*private void PlayFootstepSound()
     {
         if (footstepSounds.Length > 0)
         {
@@ -179,5 +194,5 @@ public class movimientoJugador : MonoBehaviour
             audioSource.clip = footstepSounds[randomIndex];
             audioSource.Play();
         }
-    }
+    }*/
 }

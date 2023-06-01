@@ -5,6 +5,16 @@ using UnityEngine;
 public class CombateJugador : MonoBehaviour
 {
     [SerializeField] public float vida;
+    public AudioSource audioSource;
+    public AudioClip loseLifeSound;
+    public AudioClip gainLifeSound;
+    public AudioClip lastLifeSound;
+    public AudioSource musicAudioSource;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     public void TomarDano(float dano)
     {
         CheckLife();
@@ -13,6 +23,15 @@ public class CombateJugador : MonoBehaviour
         if (vida <= 0)
         {
             Destroy(gameObject);
+            musicAudioSource.GetComponent<AudioSource>().Stop();
+        }
+        else
+        {
+            // Reproducir sonido de perder vida
+            if (loseLifeSound != null)
+            {
+                audioSource.PlayOneShot(loseLifeSound);
+            }
         }
     }
 
@@ -53,6 +72,13 @@ public class CombateJugador : MonoBehaviour
             vidas[2].SetActive(false);
             vidas[1].SetActive(false);
             vidas[0].SetActive(true);
+
+            if (!audioSource.isPlaying)
+            {
+                audioSource.clip = lastLifeSound;
+                audioSource.loop = true;
+                audioSource.Play();
+            }
         }
         else if (vida == 60f)
         {
@@ -78,6 +104,28 @@ public class CombateJugador : MonoBehaviour
             vidas[1].SetActive(true);
             vidas[0].SetActive(true);
         }
+
+        /*
+        // Reproducir sonido de ganar vida
+        if (vida == 20 && lastLifeSound != null)
+        {
+            audioSource.clip = lastLifeSound;
+            audioSource.loop = true;
+            audioSource.Play();
+        }
+        else
+        {
+            // Detener la reproducción en bucle si no es la última vida
+            audioSource.Stop();
+            audioSource.loop = false;
+
+            // Reproducir sonido de ganar vida
+            if (gainLifeSound != null)
+            {
+                audioSource.PlayOneShot(gainLifeSound);
+            }
+        }
+        */
     }
 
 }
