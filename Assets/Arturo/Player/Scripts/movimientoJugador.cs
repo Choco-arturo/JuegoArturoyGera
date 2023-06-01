@@ -16,7 +16,7 @@ public class movimientoJugador : MonoBehaviour
 
     [SerializeField] private float velocidadDeMovimiento;
     [Range (0, 0.3f)] [SerializeField] private float suavizadorDeMovimeinto;
-    private Vector2 velociad = Vector2.zero;
+    public Vector2 velociad = Vector2.zero;
     private bool mirandoDerecha = true;
 
     
@@ -47,11 +47,20 @@ public class movimientoJugador : MonoBehaviour
 
     public PlayerInput _playerInput;
 
+    public AudioClip[] footstepSounds;
+    public float stepInterval = 0.5f;
+    public AudioSource audioSource;
+    private float stepTimer;
+    private bool isMoving;
+
     void Start()
     {
         _playerInput = GetComponent<PlayerInput>();
         rb2D = GetComponent<Rigidbody2D>();  
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
+        stepTimer = stepInterval;
+
     }
 
     void Update()
@@ -64,6 +73,7 @@ public class movimientoJugador : MonoBehaviour
         animator.SetFloat("VelocidadY", rb2D.velocity.y);
 
         animator.SetBool("Deslizando", deslizando);
+
 
 
         if (_playerInput.actions["Jump"].WasPressedThisFrame())
@@ -81,7 +91,19 @@ public class movimientoJugador : MonoBehaviour
             deslizando = false;
         }
 
-        
+        stepTimer -= Time.deltaTime;
+
+        if (stepTimer <= 0f)
+        {
+            PlayFootstepSound();
+            stepTimer = stepInterval;
+        }
+        else 
+        {
+            audioSource.Stop();
+        }
+
+
     }
 
 
@@ -122,6 +144,11 @@ public class movimientoJugador : MonoBehaviour
             enSuelo= false;
             rb2D.AddForce(new Vector2(0f, fuerzaDeSalto));
         }
+
+        if (mover != 0f)
+        {
+            PlayFootstepSound();
+        }
     }
 
     public void Rebote()
@@ -142,5 +169,15 @@ public class movimientoJugador : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireCube(controladorSuelo.position, dimensionesCaja);
         Gizmos.DrawWireCube(controladorPared.position, dimensionesCajaPared);
+    }
+
+    private void PlayFootstepSound()
+    {
+        if (footstepSounds.Length > 0)
+        {
+            int randomIndex = Random.Range(0, footstepSounds.Length);
+            audioSource.clip = footstepSounds[randomIndex];
+            audioSource.Play();
+        }
     }
 }
