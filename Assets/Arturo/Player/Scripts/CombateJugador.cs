@@ -20,10 +20,12 @@ public class CombateJugador : MonoBehaviour
         CheckLife();
         vida -= dano;
 
-        if (vida <= 0)
+        if (vida <= 0f)
         {
+            //Destroy(musicAudioSource.gameObject);
             Destroy(gameObject);
             musicAudioSource.GetComponent<AudioSource>().Stop();
+            //musicAudioSource.SetActive(false);
         }
         else
         {
@@ -40,7 +42,7 @@ public class CombateJugador : MonoBehaviour
         if (collision.gameObject.CompareTag("Trap"))
         {
             CheckLife();
-            vida = vida - 150f;
+            vida = 0f;
             Destroy(gameObject);
         }
     }
