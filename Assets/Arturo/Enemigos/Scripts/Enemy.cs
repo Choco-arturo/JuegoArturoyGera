@@ -4,106 +4,96 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public float distanciaDetectar; // La distancia a la que el enemigo detectará al jugador.
-    public float distanciaAtaque; // La distancia a la que el enemigo realizará un ataque.
-    public float velocidadMovimiento; // La velocidad de movimiento del enemigo.
-    public float danoAtaque; // El daño que el enemigo infligirá al jugador.
-    public float vida; // La vida del enemigo.
+    public Transform player;
+    public float attackRadius = 3f;
+    public float detectionRadius = 10f;
+    public float movementSpeed = 5f;
+    public float attackDistance = 1.5f;
 
-    public Transform jugador; // Referencia al objeto del jugador.
-    public Transform controladorAtaque; // Referencia al objeto que controla el rango de ataque del enemigo.
+    private bool playerDetected = false;
+    private Animator animator;
+    private SpriteRenderer spriteRenderer;
 
-    
-    private bool mirandoDerecha = true; // Variable que indica si el enemigo está mirando hacia la derecha.
-
-    public enum EnemyState
+    private void Awake()
     {
-        Idle, // Estado de inactividad.
-        Moving, // Estado de movimiento.
-        Attacking, // Estado de ataque.
-        Dead // Estado de muerte.
-    }
-    public EnemyState currentState; // El estado actual del enemigo.
-
-    private void Start()
-    {
-        
-        currentState = EnemyState.Idle; // Establece el estado inicial del enemigo como inactivo.
-    }
-
-    private void Update()
-    {
-        if (currentState == EnemyState.Dead)
-        {
-            return; // Si el estado del enemigo es "Dead" (muerto), se sale del método sin hacer nada más.
-        }
-
-        float distanciaJugador = Vector2.Distance(transform.position, jugador.position); // Calcula la distancia entre el enemigo y el jugador.
-
-        if (distanciaJugador <= distanciaDetectar && distanciaJugador > distanciaAtaque)
-        {
-            currentState = EnemyState.Moving; // Si el jugador está dentro del rango de detección pero fuera del rango de ataque, el estado se establece como "Moving" (moviéndose).
-        }
-        else if (distanciaJugador <= distanciaAtaque)
-        {
-            currentState = EnemyState.Attacking; // Si el jugador está dentro del rango de ataque, el estado se establece como "Attacking" (atacando).
-        }
-        else
-        {
-            currentState = EnemyState.Idle; // De lo contrario, el estado se establece como "Idle" (inactivo).
-        }
-
-        
-
-        if (currentState == EnemyState.Moving)
-        {
-            MoveTowardsPlayer(); // Si el estado del enemigo es "Moving" (moviéndose), se mueve hacia el jugador.
-        }
-        else if (currentState == EnemyState.Attacking)
-        {
-            Attack(); // Si el estado del enemigo es "Attacking" (atacando), ataca al jugador.
-        }
-    }
-
-    private void MoveTowardsPlayer()
-    {
-        Vector2 direccionMovimiento = (jugador.position - transform.position).normalized;
-        transform.Translate(direccionMovimiento * velocidadMovimiento * Time.deltaTime);
-
-        float direccion = Mathf.Sign(jugador.position.x - transform.position.x);
-
-        if (direccion > 0 && !mirandoDerecha)
-        {
-            Flip(); // Voltear al enemigo hacia la derecha si el jugador está a la derecha y el enemigo no está mirando en esa dirección.
-        }
-        else if (direccion < 0 && mirandoDerecha)
-        {
-            Flip(); // Voltear al enemigo hacia la izquierda si el jugador está a la izquierda y el enemigo no está mirando en esa dirección.
-        }
-    }
-
-    private void Flip()
-    {
-        mirandoDerecha = !mirandoDerecha; // Invertir la variable booleana que indica si el enemigo está mirando hacia la derecha.
-        Vector2 escala = transform.localScale;
-        escala.x *= -1; // Invertir la escala en el eje X para voltear al enemigo.
-        transform.localScale = escala;
-    }
-
-    private void UpdateAnimationState()
-    {
-        // Actualizar las animaciones del enemigo según el estado actual.
-    }
-
-    private void Attack()
-    {
-        // Lógica de ataque del enemigo.
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void OnDrawGizmosSelected()
     {
-        // Dibujar un gizmo para representar la distancia de detección del enemigo.
+        // Dibujar el radio de detección en el editor
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, distanciaDetectar);
+        Gizmos.DrawWireSphere(transform.position, detectionRadius);
+
+        // Dibujar el radio de ataque en el editor
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRadius);
+    }
+
+    private void Update()
+    {
+        // Comprobar si el jugador está dentro del radio de detección
+        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+        if (distanceToPlayer <= detectionRadius)
+        {
+            playerDetected = true;
+        }
+        else
+        {
+            playerDetected = false;
+        }
+
+        // Actualizar los parámetros del Animator
+        animator.SetBool("Moving", playerDetected);
+        animator.SetBool("Attacking", distanceToPlayer <= attackRadius);
+
+        // Si el jugador está dentro del radio de ataque, atacar
+        if (distanceToPlayer <= attackDistance)
+        {
+            Attack();
+        }
+        else if (playerDetected)
+        {
+            // Si el jugador está detectado pero fuera del radio de ataque, moverse hacia él
+            MoveTowardsPlayer();
+        }
+        else
+        {
+            // Si el jugador no está detectado, detener la animación de movimiento
+            animator.SetBool("Moving", false);
+        }
+    }
+
+    public bool EstaEnMovimiento()
+    {
+        // Verificar si el enemigo se está moviendo en el eje X
+        return Mathf.Abs(GetComponent<Rigidbody2D>().velocity.x) > 0.1f;
+    }
+
+    private void MoveTowardsPlayer()
+    {
+        // Calcular la dirección hacia el jugador
+        Vector2 direction = (player.position - transform.position).normalized;
+        Debug.Log("Direction: " + direction);
+
+        // Moverse hacia el jugador
+        GetComponent<Rigidbody2D>().velocity = direction * movementSpeed;
+
+        // Voltear al enemigo hacia el jugador
+        if (direction.x > 0)
+        {
+            spriteRenderer.flipX = false;
+        }
+        else if (direction.x < 0)
+        {
+            spriteRenderer.flipX = true;
+        }
+    }
+
+    private void Attack()
+    {
+        // Realizar la lógica de ataque aquí
+        Debug.Log("¡Ataque!");
     }
 }
