@@ -46728,6 +46728,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 312195214}
     - target: {fileID: 4702778205100809074, guid: 461d9113572de1745a1ada03fe2e6894, type: 3}
+      propertyPath: particulas
+      value: 
+      objectReference: {fileID: 925641434271173619, guid: 28e019f924111e942b07ed0a5935f8b8, type: 3}
+    - target: {fileID: 4702778205100809074, guid: 461d9113572de1745a1ada03fe2e6894, type: 3}
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 948354511}
