@@ -45,6 +45,9 @@ public class movimientoJugador : MonoBehaviour
 
     private Animator animator;
 
+
+    [SerializeField] private ParticleSystem particulas;
+
     public PlayerInput _playerInput;
 
     public AudioClip[] footstepSounds;
@@ -82,6 +85,7 @@ public class movimientoJugador : MonoBehaviour
         if (_playerInput.actions["Jump"].WasPressedThisFrame())
         {
             salto = true;
+            particulas.Play();
             //jumpAudioSource.PlayOneShot(jumpAudioSource.clip);
             //enSuelo = false;
 
@@ -177,6 +181,7 @@ public class movimientoJugador : MonoBehaviour
         Vector2 escala = transform.localScale;
         escala.x *= -1;
         transform.localScale = escala;
+        particulas.Play();
     }
 
     private void OnDrawGizmos()
