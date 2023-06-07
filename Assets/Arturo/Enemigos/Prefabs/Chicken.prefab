@@ -207,7 +207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vida: 20
   velocidadMovimiento: 5
-  dano: 10
+  dano: 1
   triggerCollider: {fileID: 3500020787653060655}
 --- !u!50 &3500020788302414378
 Rigidbody2D:

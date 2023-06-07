@@ -16,7 +16,7 @@ public class Jefe : MonoBehaviour, IDano
     [Header("Ataque")]
     [SerializeField] private Transform controladorAtaque;
     [SerializeField] private float radioAtaque;
-    [SerializeField] private float danoAtaque;
+    [SerializeField] private int danoAtaque;
 
 
 
@@ -56,7 +56,7 @@ public class Jefe : MonoBehaviour, IDano
         if((jugador.position.x > transform.position.x && !mirandoDerecha) || (jugador.position.x < transform.position.x && mirandoDerecha))
         {
             mirandoDerecha = !mirandoDerecha;
-            transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + 180, 0);
+            transform.eulerAngles = new Vector2(0, transform.eulerAngles.y + 180);
         }
     }    
 

@@ -629,7 +629,6 @@ GameObject:
   - component: {fileID: 4702778205100809073}
   - component: {fileID: 1751369123}
   - component: {fileID: 1751369124}
-  - component: {fileID: 1751369125}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -721,7 +720,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.053138614}
+  m_Offset: {x: -0.015918493, y: 0.0017290115}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -732,7 +731,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.4342384, y: 2.4346545}
+  m_Size: {x: 1.2113757, y: 2.3318353}
   m_EdgeRadius: 0
 --- !u!50 &4702778205100809078
 Rigidbody2D:
@@ -769,6 +768,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocidadDeMovimiento: 500
   suavizadorDeMovimeinto: 0.016
+  velociad: {x: 0, y: 0}
   fuerzaDeSalto: 700
   queEsSuelo:
     serializedVersion: 2
@@ -780,7 +780,12 @@ MonoBehaviour:
   controladorPared: {fileID: 4702778203997195418}
   dimensionesCajaPared: {x: 0.45, y: 2}
   velocidadDeslizar: 1
-  _playerInput: {fileID: 0}
+  particulas: {fileID: 925641434271173619, guid: 28e019f924111e942b07ed0a5935f8b8, type: 3}
+  _playerInput: {fileID: 1751369124}
+  footstepSounds: []
+  stepInterval: 1
+  audioSource: {fileID: 0}
+  jumpAudioSource: {fileID: 0}
 --- !u!95 &4702778205100809075
 Animator:
   serializedVersion: 5
@@ -818,7 +823,8 @@ MonoBehaviour:
   danoGolpe: 20
   tiempoEntreAtaque: 1
   tiempoSiquienteAtaque: 0
-  _playerInput: {fileID: 0}
+  _playerInput: {fileID: 1751369124}
+  attackAudioSource: {fileID: 0}
 --- !u!114 &4702778205100809073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -831,7 +837,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0acc0c3da7ab9b44fa89501a96041218, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vida: 100
+  vida: 5
+  audioSource: {fileID: 0}
+  loseLifeSound: {fileID: 8300000, guid: 0eb8e577ec930ce4b8cc7a24d24f4509, type: 3}
+  gainLifeSound: {fileID: 8300000, guid: 7b478a82ce72e374dad3c6444530d892, type: 3}
+  lastLifeSound: {fileID: 8300000, guid: b86b546c6ce96ef4096fe6f3dfd0a09c, type: 3}
+  musicAudioSource: {fileID: 0}
   vidas:
   - {fileID: 1592962201}
   - {fileID: 1940558829}
@@ -848,7 +859,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 57b4847cb9db7134eb87a957518deb06, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.2
   m_Pitch: 1
@@ -964,22 +975,3 @@ MonoBehaviour:
   m_DefaultActionMap: PlayerBinding
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &1751369125
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4702778205100809081}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d229b2f900d07dc4abfc215e87879dd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vidas:
-  - {fileID: 1592962201}
-  - {fileID: 1940558829}
-  - {fileID: 107157727}
-  - {fileID: 1477733017}
-  - {fileID: 370633797}
-  life: 0

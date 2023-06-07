@@ -15,6 +15,7 @@ public class CombateJugador : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
     }
+
     public void TomarDano(float dano)
     {
         CheckLife();
@@ -22,14 +23,12 @@ public class CombateJugador : MonoBehaviour
 
         if (vida <= 0f)
         {
-            //Destroy(musicAudioSource.gameObject);
-            Destroy(gameObject);
             musicAudioSource.GetComponent<AudioSource>().Stop();
-            //musicAudioSource.SetActive(false);
+            Destroy(musicAudioSource.gameObject);
+            Destroy(gameObject);
         }
         else
         {
-            // Reproducir sonido de perder vida
             if (loseLifeSound != null)
             {
                 audioSource.PlayOneShot(loseLifeSound);
@@ -51,83 +50,43 @@ public class CombateJugador : MonoBehaviour
 
     void CheckLife()
     {
-        if (vida <= 0f)
-        {
-            vidas[4].SetActive(false);
-            vidas[3].SetActive(false);
-            vidas[2].SetActive(false);
-            vidas[1].SetActive(false);
-            vidas[0].SetActive(false);
-        }
-        else if (vida == 20f)
-        {
-            vidas[4].SetActive(false);
-            vidas[3].SetActive(false);
-            vidas[2].SetActive(false);
-            vidas[1].SetActive(false);
-            vidas[0].SetActive(false);
-        }
-        else if (vida == 40f)
-        {
-            vidas[4].SetActive(false);
-            vidas[3].SetActive(false);
-            vidas[2].SetActive(false);
-            vidas[1].SetActive(false);
-            vidas[0].SetActive(true);
+        int corazonesActivos = Mathf.CeilToInt(vida); // Obtener la cantidad de corazones activos
 
-            if (!audioSource.isPlaying)
+        for (int i = 0; i < vidas.Length; i++)
+        {
+            if (i < corazonesActivos)
             {
-                audioSource.clip = lastLifeSound;
-                audioSource.loop = true;
-                audioSource.Play();
+                vidas[i].SetActive(true);
+            }
+            else
+            {
+                vidas[i].SetActive(false);
             }
         }
-        else if (vida == 60f)
-        {
-            vidas[4].SetActive(false);
-            vidas[3].SetActive(false);
-            vidas[2].SetActive(false);
-            vidas[1].SetActive(true);
-            vidas[0].SetActive(true);
-        }
-        else if (vida == 80f)
-        {
-            vidas[4].SetActive(false);
-            vidas[3].SetActive(false);
-            vidas[2].SetActive(true);
-            vidas[1].SetActive(true);
-            vidas[0].SetActive(true);
-        }
-        else if (vida == 100f)
-        {
-            vidas[4].SetActive(false);
-            vidas[3].SetActive(true);            
-            vidas[2].SetActive(true);
-            vidas[1].SetActive(true);
-            vidas[0].SetActive(true);
-        }
 
-        /*
-        // Reproducir sonido de ganar vida
-        if (vida == 20 && lastLifeSound != null)
+        if (vida <= 2f && !audioSource.isPlaying)
         {
             audioSource.clip = lastLifeSound;
             audioSource.loop = true;
             audioSource.Play();
         }
-        else
+        else 
         {
-            // Detener la reproducción en bucle si no es la última vida
-            audioSource.Stop();
+            audioSource.clip = lastLifeSound;
             audioSource.loop = false;
-
-            // Reproducir sonido de ganar vida
-            if (gainLifeSound != null)
-            {
-                audioSource.PlayOneShot(gainLifeSound);
-            }
+            audioSource.Stop();
         }
-        */
     }
 
+    public void PlayerHealthed()
+    {
+        vida += 1f;
+
+        if (vida > vidas.Length)
+        {
+            vida = vidas.Length;
+        }
+
+        CheckLife();
+    }
 }
