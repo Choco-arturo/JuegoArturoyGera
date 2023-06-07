@@ -16,7 +16,7 @@ public class enemigos : MonoBehaviour
     [Header("Ataque")]
     [SerializeField] private Transform controladorAtaque;
     [SerializeField] private float radioAtaque;
-    [SerializeField] private float danoAtaque;
+    [SerializeField] private int danoAtaque;
 
 
 

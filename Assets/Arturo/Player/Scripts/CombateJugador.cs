@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CombateJugador : MonoBehaviour
 {
-    [SerializeField] public float vida;
+    [SerializeField] public int vida;
     public AudioSource audioSource;
     public AudioClip loseLifeSound;
     public AudioClip gainLifeSound;
@@ -16,7 +16,7 @@ public class CombateJugador : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    public void TomarDano(float dano)
+    public void TomarDano(int dano)
     {
         CheckLife();
         vida -= dano;
@@ -41,7 +41,7 @@ public class CombateJugador : MonoBehaviour
         if (collision.gameObject.CompareTag("Trap"))
         {
             CheckLife();
-            vida = 0f;
+            vida = 0;
             Destroy(gameObject);
         }
     }
@@ -80,7 +80,7 @@ public class CombateJugador : MonoBehaviour
 
     public void PlayerHealthed()
     {
-        vida += 1f;
+        vida += 1;
 
         if (vida > vidas.Length)
         {

@@ -10,7 +10,7 @@ public class Jefe : MonoBehaviour, IDano
     public bool mirandoDerecha = true;
 
     [Header("Vida")]
-    [SerializeField] private float vida;
+    [SerializeField] private int vida;
     [SerializeField] private BarraDevida barraDeVida;
 
     [Header("Ataque")]
@@ -35,7 +35,7 @@ public class Jefe : MonoBehaviour, IDano
 
     }
 
-    public void TomarDano(float dano)
+    public void TomarDano(int dano)
     {
         vida -= dano;
         barraDeVida.CambiarVidaActual(vida);

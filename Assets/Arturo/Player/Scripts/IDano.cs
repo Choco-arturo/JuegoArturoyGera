@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IDano
 {
-    void TomarDano(float dano);
+    void TomarDano(int dano);
 }

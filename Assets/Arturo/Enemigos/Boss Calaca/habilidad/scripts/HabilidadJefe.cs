@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HabilidadJefe : MonoBehaviour
 {
-    [SerializeField] private float dano;
+    [SerializeField] private int dano;
     [SerializeField] private Vector2 dimensionesCaja;
     [SerializeField] private Transform posicionCaja;
     [SerializeField] private float tiempoDeVida;
