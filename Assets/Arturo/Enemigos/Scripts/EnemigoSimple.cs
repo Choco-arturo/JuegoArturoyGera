@@ -8,7 +8,7 @@ public class EnemigoSimple : MonoBehaviour, IDano
     [Header("Vida")]
     [SerializeField] private int vida;
     public float velocidadMovimiento = 2f;
-    public int dano = 20;
+    public int dano = 1;
 
     public GameObject triggerCollider;
 

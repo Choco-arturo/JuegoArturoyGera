@@ -21,7 +21,7 @@ public class CombateJugador : MonoBehaviour
         CheckLife();
         vida -= dano;
 
-        if (vida <= 0f)
+        if (vida <= 0)
         {
             musicAudioSource.GetComponent<AudioSource>().Stop();
             Destroy(musicAudioSource.gameObject);
@@ -50,7 +50,7 @@ public class CombateJugador : MonoBehaviour
 
     void CheckLife()
     {
-        int corazonesActivos = Mathf.CeilToInt(vida); // Obtener la cantidad de corazones activos
+        int corazonesActivos = vida; // Obtener la cantidad de corazones activos
 
         for (int i = 0; i < vidas.Length; i++)
         {
@@ -64,13 +64,13 @@ public class CombateJugador : MonoBehaviour
             }
         }
 
-        if (vida <= 2f && !audioSource.isPlaying)
+        if (vida <= 2 && !audioSource.isPlaying)
         {
             audioSource.clip = lastLifeSound;
             audioSource.loop = true;
             audioSource.Play();
         }
-        else 
+        else
         {
             audioSource.clip = lastLifeSound;
             audioSource.loop = false;
