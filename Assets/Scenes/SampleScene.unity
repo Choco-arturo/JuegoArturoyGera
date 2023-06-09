@@ -313,6 +313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00edd44ab0246f4478dc8bba10f92558, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  danoAtaque: 10
 --- !u!61 &135644259
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -514,16 +515,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2438939211227939529, guid: 01ca1b62559f58c45a44b91f51154398, type: 3}
+      propertyPath: vida
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2438939211227939529, guid: 01ca1b62559f58c45a44b91f51154398, type: 3}
       propertyPath: jugador
       value: 
       objectReference: {fileID: 1137666335}
     - target: {fileID: 2438939211227939529, guid: 01ca1b62559f58c45a44b91f51154398, type: 3}
-      propertyPath: danoAtaque
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: barraDeVida
+      value: 
+      objectReference: {fileID: 714813271}
     - target: {fileID: 2438939211227939535, guid: 01ca1b62559f58c45a44b91f51154398, type: 3}
       propertyPath: m_Name
       value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 2438939211227939535, guid: 01ca1b62559f58c45a44b91f51154398, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -850,6 +859,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4702778205100809072, guid: 461d9113572de1745a1ada03fe2e6894, type: 3}
+      propertyPath: danoGolpe
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4702778205100809072, guid: 461d9113572de1745a1ada03fe2e6894, type: 3}
       propertyPath: tiempoSiquienteAtaque
       value: 1
       objectReference: {fileID: 0}
@@ -863,7 +876,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4702778205100809077, guid: 461d9113572de1745a1ada03fe2e6894, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 40
+      value: 46
       objectReference: {fileID: 0}
     - target: {fileID: 4702778205100809077, guid: 461d9113572de1745a1ada03fe2e6894, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1248,7 +1261,7 @@ GameObject:
   - component: {fileID: 1038756107}
   m_Layer: 0
   m_Name: Hit
-  m_TagString: Untagged
+  m_TagString: Enemigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1265,6 +1278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00edd44ab0246f4478dc8bba10f92558, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  danoAtaque: 1
 --- !u!61 &1038756108
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -18827,13 +18841,14 @@ GameObject:
   - component: {fileID: 1236461651}
   - component: {fileID: 1236461650}
   - component: {fileID: 1236461654}
+  - component: {fileID: 1236461655}
   m_Layer: 0
   m_Name: EnemyBasic
-  m_TagString: Untagged
+  m_TagString: Enemigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1236461650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18855,6 +18870,7 @@ MonoBehaviour:
   atacando: 0
   rango: {fileID: 1392496412}
   Hit: {fileID: 1038756106}
+  vida: 1
 --- !u!95 &1236461651
 Animator:
   serializedVersion: 5
@@ -18935,7 +18951,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1236461649}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 64.32, y: 2.46, z: 0}
+  m_LocalPosition: {x: 40.22, y: 2.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -18952,7 +18968,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1236461649}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -18965,6 +18981,32 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!61 &1236461655
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236461649}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.5, y: 2.8333333}
+    newSize: {x: 3, y: 3.4}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.5, y: 2.8333333}
+  m_EdgeRadius: 0
 --- !u!1 &1250124631
 GameObject:
   m_ObjectHideFlags: 0
@@ -19258,7 +19300,7 @@ GameObject:
   - component: {fileID: 1392496413}
   m_Layer: 0
   m_Name: Rango
-  m_TagString: Untagged
+  m_TagString: Enemigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20237,6 +20279,7 @@ MonoBehaviour:
   atacando: 0
   rango: {fileID: 1250124631}
   Hit: {fileID: 135644257}
+  vida: 0
 --- !u!95 &2037135051
 Animator:
   serializedVersion: 5
@@ -20482,7 +20525,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1642559752967423182, guid: 6ded76b992a5b4c41b7ea48527b40ab8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 40
+      value: 46
       objectReference: {fileID: 0}
     - target: {fileID: 1642559752967423182, guid: 6ded76b992a5b4c41b7ea48527b40ab8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -20612,7 +20655,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7329384447797015715, guid: 1f93caf073460cd47a9f7ec271de8efe, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 40
+      value: 46
       objectReference: {fileID: 0}
     - target: {fileID: 7329384447797015715, guid: 1f93caf073460cd47a9f7ec271de8efe, type: 3}
       propertyPath: m_LocalPosition.y

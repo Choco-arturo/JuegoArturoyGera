@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBasic : MonoBehaviour
+public class EnemyBasic : MonoBehaviour, IDano
 {
     public EnemyData enemyData;
     public int rutina;
@@ -14,6 +14,8 @@ public class EnemyBasic : MonoBehaviour
 
     public GameObject rango;
     public GameObject Hit;
+
+    [SerializeField] private int vida;
 
     // Start is called before the first frame update
     void Start()
@@ -123,5 +125,15 @@ public class EnemyBasic : MonoBehaviour
     void Update()
     {
         Comportamientos();
+    }
+
+    public void TomarDano(int dano)
+    {
+        vida -= dano;
+
+        if (vida <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }

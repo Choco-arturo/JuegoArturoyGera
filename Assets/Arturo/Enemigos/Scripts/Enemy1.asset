@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 418e7f5801ebce0459badec6a668b2f7, type: 3}
   m_Name: Enemy1
   m_EditorClassIdentifier: 
-  speed_walk: 2
-  speed_run: 5
+  speed_walk: 1
+  speed_run: 1
   rango_vision: 8
   rango_ataque: 2

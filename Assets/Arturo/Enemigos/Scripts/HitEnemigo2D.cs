@@ -5,23 +5,19 @@ using UnityEngine;
 public class HitEnemigo2D : MonoBehaviour
 {
 
+    public int danoAtaque = 10; // Cantidad de daño que el enemigo inflige al jugador
+
     void OnTriggerEnter2D(Collider2D coll)
     {
-        if(coll.CompareTag("Player"))
+        if (coll.CompareTag("Player"))
         {
-            print("Dano");
+            CombateJugador player = coll.GetComponent<CombateJugador>();
+            if (player != null)
+            {
+                player.TomarDano(danoAtaque);
+            }
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

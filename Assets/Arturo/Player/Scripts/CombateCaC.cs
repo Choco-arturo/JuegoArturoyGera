@@ -7,7 +7,7 @@ public class CombateCaC : MonoBehaviour
 {
     [SerializeField] private Transform controladorGolpe;
     [SerializeField] private float radiGolpe;
-    [SerializeField] private float danoGolpe;
+    [SerializeField] private int danoGolpe;
     [SerializeField] private float tiempoEntreAtaque;
     [SerializeField] private float tiempoSiquienteAtaque;
 
@@ -53,10 +53,19 @@ public class CombateCaC : MonoBehaviour
         foreach(Collider2D colisionador in objetos)
         {
            
-            if(colisionador.CompareTag("Enemigo"))
+            IDano objeto = colisionador.GetComponent<IDano>();
+            if(objeto != null)
             {
-                //colisionador.transform.GetComponent<Enemy>().TomarDano(danoGolpe);
+                objeto.TomarDano(danoGolpe);
+
+                
             }
+
+
+            //if(colisionador.CompareTag("Enemigo"))
+            //{
+                //colisionador.transform.GetComponent<Enemy>().TomarDano(danoGolpe);
+            //}
             
         }
     }
