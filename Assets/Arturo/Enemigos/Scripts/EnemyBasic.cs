@@ -15,7 +15,7 @@ public class EnemyBasic : MonoBehaviour, IDano
     public GameObject rango;
     public GameObject Hit;
 
-    [SerializeField] private int vida;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -129,9 +129,9 @@ public class EnemyBasic : MonoBehaviour, IDano
 
     public void TomarDano(int dano)
     {
-        vida -= dano;
+        enemyData.vida -= dano;
 
-        if (vida <= 0)
+        if (enemyData.vida <= 0)
         {
             Destroy(gameObject);
         }

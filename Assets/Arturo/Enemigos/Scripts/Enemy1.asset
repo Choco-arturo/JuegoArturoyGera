@@ -16,3 +16,5 @@ MonoBehaviour:
   speed_run: 1
   rango_vision: 8
   rango_ataque: 2
+  vida: 1
+  danoAtaque: 1

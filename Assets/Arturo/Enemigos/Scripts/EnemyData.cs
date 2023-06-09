@@ -9,4 +9,7 @@ public class EnemyData : ScriptableObject
     public float speed_run;
     public float rango_vision;
     public float rango_ataque;
+
+    public int vida;
+    public int danoAtaque;
 }
