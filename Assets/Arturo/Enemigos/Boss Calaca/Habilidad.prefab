@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd3cb1ddb7f1b5b49a1dfff5067f3b6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dano: 20
+  dano: 1
   dimensionesCaja: {x: 1.69, y: 3.06}
   posicionCaja: {fileID: 8371143602571707978}
   tiempoDeVida: 1.5
