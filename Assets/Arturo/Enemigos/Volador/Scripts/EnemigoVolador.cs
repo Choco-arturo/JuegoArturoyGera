@@ -9,7 +9,7 @@ public class EnemigoVolador : MonoBehaviour
 
     [Header("Vida")]
     [SerializeField] private float vida;
-
+    
     private Animator animator;
     
 
@@ -26,10 +26,12 @@ public class EnemigoVolador : MonoBehaviour
             {
                 if(other.gameObject.CompareTag("Player"))
                 {
+                    
                     if (punto.normal.y < -0.9)
                     {
                         animator.SetTrigger("Golpe");
                         other.gameObject.GetComponent<movimientoJugador>().Rebote();
+                        
                     }
                 }
             }
