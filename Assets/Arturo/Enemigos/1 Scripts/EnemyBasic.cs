@@ -15,17 +15,28 @@ public class EnemyBasic : MonoBehaviour, IDano
     public GameObject rango;
     public GameObject Hit;
 
-    
+    private bool isHit = false;
+
+
 
     // Start is called before the first frame update
     void Start()
     {
         ani = GetComponent<Animator>();
         target = GameObject.Find("Player");
+        enemyData = Instantiate(enemyData);
+
+
     }
 
     public void Comportamientos()
     {
+
+        if (isHit)
+        {
+            return;
+        }
+
         if (Mathf.Abs(transform.position.x - target.transform.position.x) > enemyData.rango_vision && !atacando)
         {
             ani.SetBool("run", false);
@@ -109,6 +120,9 @@ public class EnemyBasic : MonoBehaviour, IDano
         ani.SetBool("attack", false);
         atacando = false;
         rango.GetComponent<BoxCollider2D>().enabled = true;
+        
+        isHit = false;
+        
     }
 
     public void ColliderWeaponTrue()
@@ -129,11 +143,23 @@ public class EnemyBasic : MonoBehaviour, IDano
 
     public void TomarDano(int dano)
     {
-        enemyData.vida -= dano;
-
-        if (enemyData.vida <= 0)
+        if (!isHit)
         {
-            Destroy(gameObject);
+            isHit = true;
+            ani.SetTrigger("hit");
+            
+
+            enemyData.vida -= dano;
+
+            if (enemyData.vida <= 0)
+            {
+                ani.SetBool("dead", true);
+                Destroy(gameObject);
+            }
+
+          
         }
+
+        
     }
 }

@@ -12,4 +12,6 @@ public class EnemyData : ScriptableObject
 
     public int vida;
     public int danoAtaque;
+
+
 }
