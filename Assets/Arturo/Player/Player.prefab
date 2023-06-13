@@ -629,6 +629,8 @@ GameObject:
   - component: {fileID: 4702778205100809073}
   - component: {fileID: 1751369123}
   - component: {fileID: 1751369124}
+  - component: {fileID: 1751369126}
+  - component: {fileID: 1751369127}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -655,7 +657,7 @@ Transform:
   - {fileID: 1179021149}
   - {fileID: 2370886187512379508}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4702778205100809076
 SpriteRenderer:
@@ -771,7 +773,7 @@ MonoBehaviour:
   velocidadDeMovimiento: 500
   suavizadorDeMovimeinto: 0.016
   velociad: {x: 0, y: 0}
-  fuerzaDeSalto: 700
+  fuerzaDeSalto: 1000
   queEsSuelo:
     serializedVersion: 2
     m_Bits: 64
@@ -978,6 +980,32 @@ MonoBehaviour:
   m_DefaultActionMap: PlayerBinding
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1751369126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4702778205100809081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a5791279b1c4514e8988a953bb1e804, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 4702778205100809078}
+--- !u!114 &1751369127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4702778205100809081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d18589936528fc4cbd4c5c8670a1073, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCollider: {fileID: 4702778205100809079}
 --- !u!1001 &1459336768
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1031,9 +1059,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9034334201915962937, guid: 59f68a0b7f1633c4996cb1bc7eb0fb10, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 9034334201915962937, guid: 59f68a0b7f1633c4996cb1bc7eb0fb10, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9034334201915962937, guid: 59f68a0b7f1633c4996cb1bc7eb0fb10, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 05398886ba5e1f844a2bb4e3389471ba, type: 3}
     - target: {fileID: 9034334201915962938, guid: 59f68a0b7f1633c4996cb1bc7eb0fb10, type: 3}
       propertyPath: m_Name
       value: MusicAudio
