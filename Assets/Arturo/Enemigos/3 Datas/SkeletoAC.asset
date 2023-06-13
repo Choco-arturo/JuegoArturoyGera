@@ -15,6 +15,6 @@ MonoBehaviour:
   speed_walk: 3
   speed_run: 4
   rango_vision: 10
-  rango_ataque: 6
-  vida: -5
-  danoAtaque: 3
+  rango_ataque: 1
+  vida: 1
+  danoAtaque: 1

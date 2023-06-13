@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed_walk: 2
   speed_run: 3
-  rango_vision: 4
-  rango_ataque: 4
-  vida: -6
-  danoAtaque: 3
+  rango_vision: 6
+  rango_ataque: 1
+  vida: 1
+  danoAtaque: 1
