@@ -15,11 +15,9 @@ public class movimientoJugador : MonoBehaviour
     private float movimientoHorizontal = 0f;
 
     [SerializeField] private float velocidadDeMovimiento;
-    [Range (0, 0.3f)] [SerializeField] private float suavizadorDeMovimeinto;
+    [Range(0, 0.3f)] [SerializeField] private float suavizadorDeMovimeinto;
     public Vector2 velociad = Vector2.zero;
     private bool mirandoDerecha = true;
-
-    
 
     [Header("Salto")]
 
@@ -62,7 +60,7 @@ public class movimientoJugador : MonoBehaviour
     void Start()
     {
         _playerInput = GetComponent<PlayerInput>();
-        rb2D = GetComponent<Rigidbody2D>();  
+        rb2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
         stepTimer = stepInterval;
@@ -71,56 +69,21 @@ public class movimientoJugador : MonoBehaviour
 
     void Update()
     {
-        inputX = Input.GetAxisRaw("Horizontal");
+        inputX = _playerInput.actions["Move"].ReadValue<Vector2>().x;
         movimientoHorizontal = inputX * velocidadDeMovimiento;
 
         animator.SetFloat("Horizontal", Mathf.Abs(movimientoHorizontal));
-
         animator.SetFloat("VelocidadY", rb2D.velocity.y);
-
         animator.SetBool("Deslizando", deslizando);
-
-
 
         if (_playerInput.actions["Jump"].WasPressedThisFrame())
         {
+            // Salto normal cuando no se está en la escalera
             salto = true;
             particulas.Play();
-            //jumpAudioSource.PlayOneShot(jumpAudioSource.clip);
-            //enSuelo = false;
-
         }
-
-        if (!enSuelo && enPared && inputX != 0)
-        {
-            deslizando = true;
-        }
-        else
-        {
-            deslizando = false;
-        }
-
-        /*stepTimer -= Time.deltaTime;
-
-        if (stepTimer <= 0f)
-        {
-            PlayFootstepSound();
-            stepTimer = stepInterval;
-        }
-        else 
-        {
-            audioSource.Stop();
-        }
-
-        //movement = _playerInput.actions["Move"].ReadValue<Vector2>();
-        //float moveHorizontal = movement.x * velocidadDeMovimiento;
-
-        isMoving = movement.magnitude > 0f;
-        */
-
 
     }
-
 
     private void FixedUpdate()
     {
@@ -129,11 +92,12 @@ public class movimientoJugador : MonoBehaviour
         animator.SetBool("enSuelo", enSuelo);
 
         enPared = Physics2D.OverlapBox(controladorPared.position, dimensionesCajaPared, 0f, queEsSuelo);
-        Mover(movimientoHorizontal *Time.deltaTime, salto);
+
+        Mover(movimientoHorizontal * Time.deltaTime, salto);
 
         salto = false;
 
-        if(deslizando)
+        if (deslizando)
         {
             rb2D.velocity = new Vector2(rb2D.velocity.x, Mathf.Clamp(rb2D.velocity.y, -velocidadDeslizar, float.MaxValue));
         }
@@ -144,17 +108,17 @@ public class movimientoJugador : MonoBehaviour
         Vector2 velocidadObjetivo = new Vector2(mover, rb2D.velocity.y);
         rb2D.velocity = Vector2.SmoothDamp(rb2D.velocity, velocidadObjetivo, ref velociad, suavizadorDeMovimeinto);
 
-        if(mover > 0 && !mirandoDerecha)
+        if (mover > 0 && !mirandoDerecha)
         {
             Girar();
         }
 
-        else if(mover < 0 && mirandoDerecha)
+        else if (mover < 0 && mirandoDerecha)
         {
             Girar();
         }
 
-        if(enSuelo && saltar)
+        if (enSuelo && saltar)
         {
             if (jumpAudioSource != null && jumpAudioSource.clip != null)
             {
