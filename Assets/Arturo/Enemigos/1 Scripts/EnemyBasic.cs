@@ -147,7 +147,8 @@ public class EnemyBasic : MonoBehaviour, IDano
         {
             isHit = true;
             ani.SetTrigger("hit");
-            
+            atacando = false;
+            ani.SetBool("attack", false);
 
             enemyData.vida -= dano;
 
