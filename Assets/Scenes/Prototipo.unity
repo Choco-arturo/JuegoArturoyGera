@@ -53210,14 +53210,6 @@ PrefabInstance:
       propertyPath: jumpAudioSource
       value: 
       objectReference: {fileID: 391535554}
-    - target: {fileID: 4702778205100809076, guid: 461d9113572de1745a1ada03fe2e6894, type: 3}
-      propertyPath: m_SortingLayer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4702778205100809076, guid: 461d9113572de1745a1ada03fe2e6894, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 1066833145
-      objectReference: {fileID: 0}
     - target: {fileID: 4702778205100809077, guid: 461d9113572de1745a1ada03fe2e6894, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -57385,11 +57377,6 @@ MonoBehaviour:
   - {x: -0.098155975, y: 0.7932379, z: 0}
   - {x: -0.29103088, y: 0.7519076, z: 0}
   - {x: -0.43396997, y: 0.6495278, z: 0}
---- !u!1 &1304595080 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4702778205100809081, guid: 461d9113572de1745a1ada03fe2e6894, type: 3}
-  m_PrefabInstance: {fileID: 873440504}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1333020964
 GameObject:
   m_ObjectHideFlags: 0
@@ -75256,7 +75243,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4702778205100809073, guid: 461d9113572de1745a1ada03fe2e6894, type: 3}
   m_PrefabInstance: {fileID: 873440504}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1304595080}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0acc0c3da7ab9b44fa89501a96041218, type: 3}
@@ -75267,25 +75254,12 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1751369124, guid: 461d9113572de1745a1ada03fe2e6894, type: 3}
   m_PrefabInstance: {fileID: 873440504}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1304595080}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1751369128
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1304595080}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42a8e59d48d746e4eaee0950968c16b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  teleportDelay: 1
 --- !u!1 &1771685396
 GameObject:
   m_ObjectHideFlags: 0
