@@ -8,6 +8,8 @@ TagManager:
   - Trap
   - Ground
   - Ladder
+  - OneWayPlatform
+  - Teleporter
   layers:
   - Default
   - TransparentFX
@@ -62,4 +64,10 @@ TagManager:
     locked: 0
   - name: Piso
     uniqueID: 352212579
+    locked: 0
+  - name: Trampas
+    uniqueID: 301642901
+    locked: 0
+  - name: Corazones
+    uniqueID: 3477434669
     locked: 0
