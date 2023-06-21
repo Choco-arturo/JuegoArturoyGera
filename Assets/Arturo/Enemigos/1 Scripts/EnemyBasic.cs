@@ -16,6 +16,7 @@ public class EnemyBasic : MonoBehaviour, IDano
     public GameObject Hit;
 
     private bool isHit = false;
+    private bool isDead = false;
 
 
 
@@ -31,6 +32,10 @@ public class EnemyBasic : MonoBehaviour, IDano
 
     public void Comportamientos()
     {
+        if (isDead)
+        {
+            return;
+        }
 
         if (isHit)
         {
@@ -113,6 +118,7 @@ public class EnemyBasic : MonoBehaviour, IDano
                 }
             }
         }
+        
     }
 
     public void Final_Ani()
@@ -154,13 +160,29 @@ public class EnemyBasic : MonoBehaviour, IDano
 
             if (enemyData.vida <= 0)
             {
-                ani.SetBool("dead", true);
-                Destroy(gameObject);
+                Dead();
+                
             }
 
           
         }
 
         
+    }
+
+    public void Dead()
+    {
+        isDead = true;
+        rango.GetComponent<BoxCollider2D>().enabled = false;
+        Hit.GetComponent<BoxCollider2D>().enabled = false;
+        ani.SetBool("run", false);
+        ani.SetBool("walk", false);
+        ani.SetBool("attack", false);
+        ani.SetTrigger("dead");
+    }
+
+    public void DestroyObject()
+    {
+        Destroy(gameObject);
     }
 }
