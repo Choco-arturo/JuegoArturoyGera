@@ -71,3 +71,6 @@ TagManager:
   - name: Corazones
     uniqueID: 3477434669
     locked: 0
+  - name: Jiggie
+    uniqueID: 349067345
+    locked: 0
