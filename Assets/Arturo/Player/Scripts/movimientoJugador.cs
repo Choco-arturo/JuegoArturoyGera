@@ -39,6 +39,10 @@ public class movimientoJugador : MonoBehaviour
     private bool enPared;
     private bool deslizando;
     [SerializeField] private float velocidadDeslizar;
+    [SerializeField] private float fuerzaSaltoParedX;
+    [SerializeField] private float furzzaSaltoParedY;
+    [SerializeField] private float tiempoSaltoPared;
+    private bool saltandoDePared;
 
 
     [Header("animacion")]
@@ -86,6 +90,14 @@ public class movimientoJugador : MonoBehaviour
             particulas.Play();
         }
 
+        if(enSuelo && enPared && inputX !=0)
+        {
+            deslizando= true;
+        }
+        else
+        {
+            deslizando= false;
+        }
     }
 
     private void FixedUpdate()
@@ -108,10 +120,13 @@ public class movimientoJugador : MonoBehaviour
 
     private void Mover(float mover, bool saltar)
     {
-     
+        if(!saltandoDePared)
+        {
+            Vector2 velocidadObjetivo = new Vector2(mover, rb2D.velocity.y);
+            rb2D.velocity = Vector2.SmoothDamp(rb2D.velocity, velocidadObjetivo, ref velociad, suavizadorDeMovimeinto);
+        }
         
-        Vector2 velocidadObjetivo = new Vector2(mover, rb2D.velocity.y);
-        rb2D.velocity = Vector2.SmoothDamp(rb2D.velocity, velocidadObjetivo, ref velociad, suavizadorDeMovimeinto);
+        
 
         if (mover > 0 && !mirandoDerecha)
         {
@@ -125,20 +140,43 @@ public class movimientoJugador : MonoBehaviour
         
         
 
-        if (enSuelo && saltar)
+        if (enSuelo && saltar && !deslizando)
         {
-            if (jumpAudioSource != null && jumpAudioSource.clip != null)
-            {
-                jumpAudioSource.PlayOneShot(jumpAudioSource.clip);
-            }
-            enSuelo = false;
-            rb2D.AddForce(new Vector2(0f, fuerzaDeSalto));
+            Salto();
         }
 
+        if (enPared && saltar && !deslizando)
+        {
+            //SALTOPARED
+            SaltoPared();
+        }
         /*if (mover != 0f)
         {
             PlayFootstepSound();
         }*/
+    }
+     private void SaltoPared()
+    {
+        enPared = false;
+        rb2D.velocity = new Vector2(fuerzaSaltoParedX * -inputX, furzzaSaltoParedY);
+        StartCoroutine(CambioSaltoPared());
+    }
+
+    IEnumerator CambioSaltoPared()
+    {
+        saltandoDePared= true;
+        yield return new WaitForSeconds(tiempoSaltoPared);
+        saltandoDePared= false;
+    }
+
+    private void Salto()
+    {
+        if (jumpAudioSource != null && jumpAudioSource.clip != null)
+        {
+            jumpAudioSource.PlayOneShot(jumpAudioSource.clip);
+        }
+        enSuelo = false;
+        rb2D.AddForce(new Vector2(0f, fuerzaDeSalto));
     }
 
     public void Rebote()
