@@ -7803,10 +7803,10 @@ PlayableDirector:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 689066714}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: 79d2394a39481a84fa35dc3cf0f98d49, type: 2}
-  m_InitialState: 1
+  m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
@@ -24030,7 +24030,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   controladorSuelo: {fileID: 1736440696794220905}
-  dimensionesCaja: {x: 0.74, y: 0.3}
+  dimensionesCaja: {x: 1.34, y: 0.3}
   enSuelo: 0
   velocidadRebote: 20
   controladorPared: {fileID: 1736440697513376968}
@@ -24052,7 +24052,7 @@ Animator:
   m_GameObject: {fileID: 1736440696394001195}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 15b88c27deaaf4843889f0083185d0e7, type: 2}
+  m_Controller: {fileID: 9100000, guid: 44322bf05bb311d4dab8cd946a49e7ba, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -24140,7 +24140,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.015918493, y: 0.0017290115}
+  m_Offset: {x: -0.32763183, y: -0.26486787}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -24151,7 +24151,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2113757, y: 2.3318353}
+  m_Size: {x: 1.1621578, y: 2.1267607}
   m_EdgeRadius: 0
 --- !u!212 &1736440696394001190
 SpriteRenderer:
@@ -24278,7 +24278,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1736440696794220904}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.35, y: -1.18, z: 0}
+  m_LocalPosition: {x: -0.325, y: -1.32, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -24701,7 +24701,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2764420113086548340}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.6, y: 2.16, z: 0}
+  m_LocalPosition: {x: 0.6, y: 2.24, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -24917,7 +24917,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2764420113474202423}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.102, z: 0}
+  m_LocalPosition: {x: 0, y: -1.143, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

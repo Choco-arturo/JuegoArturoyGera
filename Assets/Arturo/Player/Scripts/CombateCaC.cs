@@ -17,6 +17,9 @@ public class CombateCaC : MonoBehaviour
 
     public AudioSource attackAudioSource;
 
+    
+
+
 
     private void Start()
     {
@@ -33,6 +36,7 @@ public class CombateCaC : MonoBehaviour
 
         if (_playerInput.actions["Attack"].WasPressedThisFrame())
         {
+            
             Golpe();
             tiempoSiquienteAtaque = tiempoEntreAtaque;
         }
@@ -68,6 +72,8 @@ public class CombateCaC : MonoBehaviour
             //}
             
         }
+        // Establecer realizandoGolpe en false después de realizar el golpe
+        
     }
 
     private void OnDrawGizmos()

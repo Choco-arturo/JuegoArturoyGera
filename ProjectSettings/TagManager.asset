@@ -74,3 +74,6 @@ TagManager:
   - name: Jiggie
     uniqueID: 349067345
     locked: 0
+  - name: Ladders
+    uniqueID: 3542126315
+    locked: 0

@@ -14,6 +14,8 @@ public class movimientoJugador : MonoBehaviour
 
     private float movimientoHorizontal = 0f;
 
+    
+
     [SerializeField] private float velocidadDeMovimiento;
     [Range(0, 0.3f)] [SerializeField] private float suavizadorDeMovimeinto;
     public Vector2 velociad = Vector2.zero;
@@ -78,6 +80,7 @@ public class movimientoJugador : MonoBehaviour
 
         if (_playerInput.actions["Jump"].WasPressedThisFrame())
         {
+            
             // Salto normal cuando no se está en la escalera
             salto = true;
             particulas.Play();
@@ -105,6 +108,8 @@ public class movimientoJugador : MonoBehaviour
 
     private void Mover(float mover, bool saltar)
     {
+     
+        
         Vector2 velocidadObjetivo = new Vector2(mover, rb2D.velocity.y);
         rb2D.velocity = Vector2.SmoothDamp(rb2D.velocity, velocidadObjetivo, ref velociad, suavizadorDeMovimeinto);
 
@@ -117,6 +122,8 @@ public class movimientoJugador : MonoBehaviour
         {
             Girar();
         }
+        
+        
 
         if (enSuelo && saltar)
         {
