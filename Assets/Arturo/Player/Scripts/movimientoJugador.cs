@@ -10,11 +10,7 @@ public class movimientoJugador : MonoBehaviour
 
     [Header("Movimiento")]
 
-    private float inputX;
-
     private float movimientoHorizontal = 0f;
-
-    
 
     [SerializeField] private float velocidadDeMovimiento;
     [Range(0, 0.3f)] [SerializeField] private float suavizadorDeMovimeinto;
@@ -33,15 +29,6 @@ public class movimientoJugador : MonoBehaviour
     [Header("Rebote")]
     [SerializeField] private float velocidadRebote;
 
-    [Header("SaltoPared")]
-    [SerializeField] private Transform controladorPared;
-    [SerializeField] private Vector2 dimensionesCajaPared;
-    private bool enPared;
-    private bool deslizando;
-    [SerializeField] private float velocidadDeslizar;
-    [SerializeField] private float fuerzaSaltoParedX;
-    [SerializeField] private float furzzaSaltoParedY;
-    [SerializeField] private float tiempoSaltoPared;
     private bool saltandoDePared;
 
 
@@ -81,14 +68,13 @@ public class movimientoJugador : MonoBehaviour
     void Update()
     {
         Damage();
-        if(!damage_)
-        {
-            inputX = _playerInput.actions["Move"].ReadValue<Vector2>().x;
-            movimientoHorizontal = inputX * velocidadDeMovimiento;
+        
+            //inputX = _playerInput.actions["Move"].ReadValue<Vector2>().x;
+            movimientoHorizontal = _playerInput.actions["Move"].ReadValue<Vector2>().x * velocidadDeMovimiento;
 
             animator.SetFloat("Horizontal", Mathf.Abs(movimientoHorizontal));
             animator.SetFloat("VelocidadY", rb2D.velocity.y);
-            animator.SetBool("Deslizando", deslizando);
+           
 
             if (_playerInput.actions["Jump"].WasPressedThisFrame())
             {
@@ -98,16 +84,7 @@ public class movimientoJugador : MonoBehaviour
                 particulas.Play();
             }
 
-            if (enSuelo && enPared && inputX != 0)
-            {
-                deslizando = true;
-            }
-            else
-            {
-                deslizando = false;
-            }
-        }
-        
+
     }
 
     private void FixedUpdate()
@@ -117,22 +94,18 @@ public class movimientoJugador : MonoBehaviour
         animator.SetBool("enSuelo", enSuelo);
 
 
-        enPared = Physics2D.OverlapBox(controladorPared.position, dimensionesCajaPared, 0f, queEsSuelo);
+        
 
         Mover(movimientoHorizontal * Time.deltaTime, salto);
 
         salto = false;
 
-        if (deslizando)
-        {
-            rb2D.velocity = new Vector2(rb2D.velocity.x, Mathf.Clamp(rb2D.velocity.y, -velocidadDeslizar, float.MaxValue));
-        }
+        
     }
 
     private void Mover(float mover, bool saltar)
     {
-        if(!damage_)
-        {
+        
             if (!saltandoDePared)
             {
                 Vector2 velocidadObjetivo = new Vector2(mover, rb2D.velocity.y);
@@ -153,21 +126,11 @@ public class movimientoJugador : MonoBehaviour
 
 
 
-            if (enSuelo && saltar && !deslizando)
+            if (enSuelo && saltar)
             {
                 Salto();
             }
-
-            if (enPared && saltar && !deslizando)
-            {
-                //SALTOPARED
-                SaltoPared();
-            }
-            /*if (mover != 0f)
-            {
-                PlayFootstepSound();
-            }*/
-        }
+        
 
     }
 
@@ -177,11 +140,11 @@ public class movimientoJugador : MonoBehaviour
         {
             transform.Translate(Vector3.right * empuje*Time.deltaTime, Space.World);
             
-            salto = false;
-            enPared = false;
-            deslizando = false;
-            saltandoDePared = false;
-            isMoving = false;
+            //salto = false;
+            //enPared = false;
+            //deslizando = false;
+            //saltandoDePared = false;
+            //isMoving = true;
 
             
         }
@@ -192,19 +155,7 @@ public class movimientoJugador : MonoBehaviour
         damage_= false;
     }
 
-     private void SaltoPared()
-    {
-        enPared = false;
-        rb2D.velocity = new Vector2(fuerzaSaltoParedX * -inputX, furzzaSaltoParedY);
-        StartCoroutine(CambioSaltoPared());
-    }
-
-    IEnumerator CambioSaltoPared()
-    {
-        saltandoDePared= true;
-        yield return new WaitForSeconds(tiempoSaltoPared);
-        saltandoDePared= false;
-    }
+    
 
     private void Salto()
     {
@@ -235,7 +186,7 @@ public class movimientoJugador : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireCube(controladorSuelo.position, dimensionesCaja);
-        Gizmos.DrawWireCube(controladorPared.position, dimensionesCajaPared);
+        
     }
 
     /*private void PlayFootstepSound()

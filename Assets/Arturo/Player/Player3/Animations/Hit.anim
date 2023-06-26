@@ -21,11 +21,11 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 21300000, guid: 1fd363f53a3dae24c89c226839c192dd, type: 3}
-    - time: 0.16666667
+    - time: 0.033333335
       value: {fileID: 21300000, guid: e6b2dec83e3bc1549acffab2a2d85599, type: 3}
-    - time: 0.33333334
+    - time: 0.05
       value: {fileID: 21300000, guid: bad4fe76d49e89d48b3c9a87041f6023, type: 3}
-    - time: 0.5
+    - time: 0.083333336
       value: {fileID: 21300000, guid: 1b6d954b4f77c0448b35a2c8a6b16e2e, type: 3}
     attribute: m_Sprite
     path: 
@@ -56,7 +56,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.51666665
+    m_StopTime: 0.5
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -75,4 +75,18 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.083333336
+    functionName: Finish_Damage
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.5
+    functionName: 
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

@@ -18,17 +18,26 @@ public class EnemyBasic : MonoBehaviour, IDano
     private bool isHit = false;
     private bool isDead = false;
 
+    [SerializeField] private float velocidad;
+    [SerializeField] private Transform controladorSuelo;
+    [SerializeField] private float distancia;
+    [SerializeField] private bool movimientoDerecha;
+
+    private Rigidbody rb;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
         ani = GetComponent<Animator>();
-        target = GameObject.Find("Player");
+        target = GameObject.FindWithTag("Player");
         enemyData = Instantiate(enemyData);
 
 
     }
+
+   
 
     public void Comportamientos()
     {
@@ -163,11 +172,7 @@ public class EnemyBasic : MonoBehaviour, IDano
                 Dead();
                 
             }
-
-          
         }
-
-        
     }
 
     public void Dead()
@@ -185,4 +190,6 @@ public class EnemyBasic : MonoBehaviour, IDano
     {
         Destroy(gameObject);
     }
+
+    
 }
