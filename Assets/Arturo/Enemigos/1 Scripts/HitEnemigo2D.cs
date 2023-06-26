@@ -26,7 +26,7 @@ public class HitEnemigo2D : MonoBehaviour
                     coll.GetComponent<movimientoJugador>().damage_ = true;
                     if (transform.position.x > coll.transform.position.x)
                     {
-                        coll.GetComponent<movimientoJugador>().empuje = -5;
+                        coll.GetComponent<movimientoJugador>().empuje = 0;
                         coll.transform.rotation = Quaternion.Euler(0, 0, 0);
                     }
                     else

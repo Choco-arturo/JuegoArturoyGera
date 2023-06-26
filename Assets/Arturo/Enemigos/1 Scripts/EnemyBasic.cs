@@ -18,12 +18,6 @@ public class EnemyBasic : MonoBehaviour, IDano
     private bool isHit = false;
     private bool isDead = false;
 
-    [SerializeField] private float velocidad;
-    [SerializeField] private Transform controladorSuelo;
-    [SerializeField] private float distancia;
-    [SerializeField] private bool movimientoDerecha;
-
-    private Rigidbody rb;
 
 
 

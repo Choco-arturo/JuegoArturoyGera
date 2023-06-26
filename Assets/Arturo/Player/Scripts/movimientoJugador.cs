@@ -140,7 +140,7 @@ public class movimientoJugador : MonoBehaviour
         {
             transform.Translate(Vector3.right * empuje*Time.deltaTime, Space.World);
             
-            //salto = false;
+            salto = false;
             //enPared = false;
             //deslizando = false;
             //saltandoDePared = false;
