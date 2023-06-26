@@ -47,7 +47,7 @@ public class movimientoJugador : MonoBehaviour
 
     [Header("animacion")]
 
-    private Animator animator;
+    public Animator animator;
 
 
     [SerializeField] private ParticleSystem particulas;
@@ -63,6 +63,11 @@ public class movimientoJugador : MonoBehaviour
 
     [SerializeField] private AudioSource jumpAudioSource;
 
+    //atacque al player
+
+    public bool damage_;
+    public int empuje;
+    public CombateCaC player;
     void Start()
     {
         _playerInput = GetComponent<PlayerInput>();
@@ -75,29 +80,34 @@ public class movimientoJugador : MonoBehaviour
 
     void Update()
     {
-        inputX = _playerInput.actions["Move"].ReadValue<Vector2>().x;
-        movimientoHorizontal = inputX * velocidadDeMovimiento;
-
-        animator.SetFloat("Horizontal", Mathf.Abs(movimientoHorizontal));
-        animator.SetFloat("VelocidadY", rb2D.velocity.y);
-        animator.SetBool("Deslizando", deslizando);
-
-        if (_playerInput.actions["Jump"].WasPressedThisFrame())
+        Damage();
+        if(!damage_)
         {
-            
-            // Salto normal cuando no se está en la escalera
-            salto = true;
-            particulas.Play();
-        }
+            inputX = _playerInput.actions["Move"].ReadValue<Vector2>().x;
+            movimientoHorizontal = inputX * velocidadDeMovimiento;
 
-        if(enSuelo && enPared && inputX !=0)
-        {
-            deslizando= true;
+            animator.SetFloat("Horizontal", Mathf.Abs(movimientoHorizontal));
+            animator.SetFloat("VelocidadY", rb2D.velocity.y);
+            animator.SetBool("Deslizando", deslizando);
+
+            if (_playerInput.actions["Jump"].WasPressedThisFrame())
+            {
+
+                // Salto normal cuando no se está en la escalera
+                salto = true;
+                particulas.Play();
+            }
+
+            if (enSuelo && enPared && inputX != 0)
+            {
+                deslizando = true;
+            }
+            else
+            {
+                deslizando = false;
+            }
         }
-        else
-        {
-            deslizando= false;
-        }
+        
     }
 
     private void FixedUpdate()
@@ -105,6 +115,7 @@ public class movimientoJugador : MonoBehaviour
         enSuelo = Physics2D.OverlapBox(controladorSuelo.position, dimensionesCaja, 0f, queEsSuelo);
 
         animator.SetBool("enSuelo", enSuelo);
+
 
         enPared = Physics2D.OverlapBox(controladorPared.position, dimensionesCajaPared, 0f, queEsSuelo);
 
@@ -120,41 +131,67 @@ public class movimientoJugador : MonoBehaviour
 
     private void Mover(float mover, bool saltar)
     {
-        if(!saltandoDePared)
+        if(!damage_)
         {
-            Vector2 velocidadObjetivo = new Vector2(mover, rb2D.velocity.y);
-            rb2D.velocity = Vector2.SmoothDamp(rb2D.velocity, velocidadObjetivo, ref velociad, suavizadorDeMovimeinto);
-        }
-        
-        
+            if (!saltandoDePared)
+            {
+                Vector2 velocidadObjetivo = new Vector2(mover, rb2D.velocity.y);
+                rb2D.velocity = Vector2.SmoothDamp(rb2D.velocity, velocidadObjetivo, ref velociad, suavizadorDeMovimeinto);
+            }
 
-        if (mover > 0 && !mirandoDerecha)
-        {
-            Girar();
+
+
+            if (mover > 0 && !mirandoDerecha)
+            {
+                Girar();
+            }
+
+            else if (mover < 0 && mirandoDerecha)
+            {
+                Girar();
+            }
+
+
+
+            if (enSuelo && saltar && !deslizando)
+            {
+                Salto();
+            }
+
+            if (enPared && saltar && !deslizando)
+            {
+                //SALTOPARED
+                SaltoPared();
+            }
+            /*if (mover != 0f)
+            {
+                PlayFootstepSound();
+            }*/
         }
 
-        else if (mover < 0 && mirandoDerecha)
-        {
-            Girar();
-        }
-        
-        
-
-        if (enSuelo && saltar && !deslizando)
-        {
-            Salto();
-        }
-
-        if (enPared && saltar && !deslizando)
-        {
-            //SALTOPARED
-            SaltoPared();
-        }
-        /*if (mover != 0f)
-        {
-            PlayFootstepSound();
-        }*/
     }
+
+    public void Damage()
+    {
+        if(damage_)
+        {
+            transform.Translate(Vector3.right * empuje*Time.deltaTime, Space.World);
+            
+            salto = false;
+            enPared = false;
+            deslizando = false;
+            saltandoDePared = false;
+            isMoving = false;
+
+            
+        }
+    }
+
+    public void Finish_Damage()
+    {
+        damage_= false;
+    }
+
      private void SaltoPared()
     {
         enPared = false;
@@ -177,6 +214,7 @@ public class movimientoJugador : MonoBehaviour
         }
         enSuelo = false;
         rb2D.AddForce(new Vector2(0f, fuerzaDeSalto));
+        particulas.Play();
     }
 
     public void Rebote()
