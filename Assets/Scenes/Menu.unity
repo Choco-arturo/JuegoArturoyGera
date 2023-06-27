@@ -3882,7 +3882,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7002505926705775258, guid: c52c658863d60b548869d74feff18dcb, type: 3}
       propertyPath: m_SortingOrder
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 7002505926705775258, guid: c52c658863d60b548869d74feff18dcb, type: 3}
       propertyPath: m_RenderAlignment
