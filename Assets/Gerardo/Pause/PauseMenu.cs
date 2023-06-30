@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -12,9 +13,16 @@ public class PauseMenu : MonoBehaviour
 
     private bool isPaused = false;
 
+    private PlayerInput playerInput;
+
+    void Start()
+    {
+        playerInput = GetComponent<PlayerInput>();
+    }
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (playerInput.actions["Pause"].WasPressedThisFrame())
         {
             if (isPaused)
                 Unpause();
