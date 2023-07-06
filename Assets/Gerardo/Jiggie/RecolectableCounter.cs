@@ -3,12 +3,15 @@ using TMPro;
 
 public class RecolectableCounter : MonoBehaviour
 {
+    public AudioSource audioSource;
+    public float volume = 1f;
+
     private int recolectables = 0;
-    private TMP_Text textComponent; // Cambio de Text a TMP_Text
+    private TMP_Text textComponent;
 
     private void Start()
     {
-        textComponent = GetComponent<TMP_Text>(); // Cambio de GetComopnent<Text>() a GetComponent<TMP_Text>()
+        textComponent = GetComponent<TMP_Text>();
         UpdateUI();
     }
 
@@ -16,6 +19,12 @@ public class RecolectableCounter : MonoBehaviour
     {
         recolectables++;
         UpdateUI();
+
+        // Reproducir el sonido del recolectable utilizando el AudioSource
+        if (audioSource != null)
+        {
+            audioSource.PlayOneShot(audioSource.clip, volume);
+        }
     }
 
     public int GetRecolectables()
