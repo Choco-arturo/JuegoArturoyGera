@@ -11,9 +11,12 @@ public class CombateJugador : MonoBehaviour
     public AudioClip lastLifeSound;
     public AudioSource musicAudioSource;
 
+    private Animator animator;
+
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
     }
 
     public void TomarDano(int dano)
@@ -23,9 +26,8 @@ public class CombateJugador : MonoBehaviour
 
         if (vida <= 0)
         {
-            musicAudioSource.GetComponent<AudioSource>().Stop();
-            Destroy(musicAudioSource.gameObject);
-            Destroy(gameObject);
+            // Reproducir animación de muerte
+            animator.SetTrigger("dead");
         }
         else
         {
@@ -42,7 +44,9 @@ public class CombateJugador : MonoBehaviour
         {
             CheckLife();
             vida = 0;
-            Destroy(gameObject);
+
+            // Reproducir animación de muerte
+            animator.SetTrigger("dead");
         }
     }
 

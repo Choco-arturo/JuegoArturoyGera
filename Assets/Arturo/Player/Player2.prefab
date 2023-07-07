@@ -58,7 +58,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2070385842892356877
 Transform:
   m_ObjectHideFlags: 0
@@ -77,7 +77,7 @@ Transform:
   - {fileID: 6771411802227296549}
   - {fileID: 1254701303146523992}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2070385842892356876
 SpriteRenderer:
@@ -190,6 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1509f4c17e1bfaa4d82b0183fb7ebe77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  combateJugador: {fileID: 0}
   velocidadDeMovimiento: 500
   suavizadorDeMovimeinto: 0.016
   velociad: {x: 0, y: 0}
@@ -5749,6 +5750,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e07650168e01364cab657a9e76926c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
+  volume: 1
 --- !u!1 &6771411801814960865
 GameObject:
   m_ObjectHideFlags: 0

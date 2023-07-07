@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class movimientoJugador : MonoBehaviour
 {
     private Rigidbody2D rb2D;
+    public CombateJugador combateJugador;
 
     [Header("Movimiento")]
 
@@ -62,19 +63,21 @@ public class movimientoJugador : MonoBehaviour
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
         stepTimer = stepInterval;
-
+        combateJugador = GetComponent<CombateJugador>();
     }
 
     void Update()
     {
-        Damage();
-        
+        if (combateJugador != null && combateJugador.vida > 0)
+        {
+            Damage();
+
             //inputX = _playerInput.actions["Move"].ReadValue<Vector2>().x;
             movimientoHorizontal = _playerInput.actions["Move"].ReadValue<Vector2>().x * velocidadDeMovimiento;
 
             animator.SetFloat("Horizontal", Mathf.Abs(movimientoHorizontal));
             animator.SetFloat("VelocidadY", rb2D.velocity.y);
-           
+
 
             if (_playerInput.actions["Jump"].WasPressedThisFrame())
             {
@@ -83,22 +86,28 @@ public class movimientoJugador : MonoBehaviour
                 salto = true;
                 particulas.Play();
             }
+        }
+        
 
 
     }
 
     private void FixedUpdate()
     {
-        enSuelo = Physics2D.OverlapBox(controladorSuelo.position, dimensionesCaja, 0f, queEsSuelo);
+        if (combateJugador != null && combateJugador.vida > 0)
+        {
+            enSuelo = Physics2D.OverlapBox(controladorSuelo.position, dimensionesCaja, 0f, queEsSuelo);
 
-        animator.SetBool("enSuelo", enSuelo);
+            animator.SetBool("enSuelo", enSuelo);
 
 
+
+
+            Mover(movimientoHorizontal * Time.deltaTime, salto);
+
+            salto = false;
+        }
         
-
-        Mover(movimientoHorizontal * Time.deltaTime, salto);
-
-        salto = false;
 
         
     }

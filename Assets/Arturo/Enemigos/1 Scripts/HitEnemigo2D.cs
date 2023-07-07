@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HitEnemigo2D : MonoBehaviour
 {
-
+    
     //public int danoAtaque = 10; // Cantidad de daño que el enemigo inflige al jugador
 
     void OnTriggerEnter2D(Collider2D coll)
@@ -12,12 +12,13 @@ public class HitEnemigo2D : MonoBehaviour
         if (coll.CompareTag("Player"))
         {
             
+
             CombateJugador player = coll.GetComponent<CombateJugador>();
             if (player != null)
             {
 
                 EnemyBasic enemy = GetComponentInParent<EnemyBasic>();
-                if (enemy != null)
+                if (enemy != null && player.vida > 0)
                 {
                     int danoAtaque = enemy.enemyData.danoAtaque;
                     player.TomarDano(danoAtaque);
@@ -34,8 +35,14 @@ public class HitEnemigo2D : MonoBehaviour
                         //coll.GetComponent<movimientoJugador>().empuje = 3;
                         //coll.transform.rotation = Quaternion.Euler(0, 180, 0);
                     }
+                    if (player.vida <= 0)
+                    {
+                        enemy.StopAttackAnimation();
+                    }
                 }
             }
+            
+            
         }
     }
 

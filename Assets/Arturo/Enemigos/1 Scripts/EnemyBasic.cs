@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EnemyBasic : MonoBehaviour, IDano
 {
+
+    public CombateJugador jugador;
+
     public EnemyData enemyData;
     public int rutina;
     public float cronometro;
@@ -11,6 +14,8 @@ public class EnemyBasic : MonoBehaviour, IDano
     public int direccion;
     public GameObject target;
     public bool atacando;
+    public bool puedeAtacar = true;
+
 
     public GameObject rango;
     public GameObject Hit;
@@ -24,6 +29,7 @@ public class EnemyBasic : MonoBehaviour, IDano
         ani = GetComponent<Animator>();
         target = GameObject.FindWithTag("Player");
         enemyData = Instantiate(enemyData);
+        jugador = target.GetComponent<CombateJugador>();
     }
 
     private void Update()
@@ -43,12 +49,19 @@ public class EnemyBasic : MonoBehaviour, IDano
             return;
         }
 
+        
+
         if (!canAttack)
         {
             return;
         }
 
         if (isHit)
+        {
+            return;
+        }
+
+        if (jugador.vida <= 0)
         {
             return;
         }
@@ -169,9 +182,16 @@ public class EnemyBasic : MonoBehaviour, IDano
             if (enemyData.vida <= 0)
             {
                 canAttack = false; // Desactivar la capacidad de ataque del enemigo
+                StopAttackAnimation();
                 Dead();
             }
         }
+    }
+
+    public void StopAttackAnimation()
+    {
+        ani.SetBool("attack", false);
+        atacando = false;
     }
 
     public void Dead()
