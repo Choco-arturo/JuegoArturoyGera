@@ -17,25 +17,33 @@ public class EnemyBasic : MonoBehaviour, IDano
 
     private bool isHit = false;
     private bool isDead = false;
+    private bool canAttack = true;
 
-
-
-
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         ani = GetComponent<Animator>();
         target = GameObject.FindWithTag("Player");
         enemyData = Instantiate(enemyData);
-
-
     }
 
-   
+    private void Update()
+    {
+        if (isDead)
+        {
+            return;
+        }
+
+        Comportamientos();
+    }
 
     public void Comportamientos()
     {
         if (isDead)
+        {
+            return;
+        }
+
+        if (!canAttack)
         {
             return;
         }
@@ -121,7 +129,6 @@ public class EnemyBasic : MonoBehaviour, IDano
                 }
             }
         }
-        
     }
 
     public void Final_Ani()
@@ -129,9 +136,8 @@ public class EnemyBasic : MonoBehaviour, IDano
         ani.SetBool("attack", false);
         atacando = false;
         rango.GetComponent<BoxCollider2D>().enabled = true;
-        
+
         isHit = false;
-        
     }
 
     public void ColliderWeaponTrue()
@@ -144,15 +150,14 @@ public class EnemyBasic : MonoBehaviour, IDano
         Hit.GetComponent<BoxCollider2D>().enabled = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    public bool IsDead()
     {
-        Comportamientos();
+        return isDead;
     }
 
     public void TomarDano(int dano)
     {
-        if (!isHit)
+        if (!isHit && !isDead)
         {
             isHit = true;
             ani.SetTrigger("hit");
@@ -163,8 +168,8 @@ public class EnemyBasic : MonoBehaviour, IDano
 
             if (enemyData.vida <= 0)
             {
+                canAttack = false; // Desactivar la capacidad de ataque del enemigo
                 Dead();
-                
             }
         }
     }
@@ -178,12 +183,13 @@ public class EnemyBasic : MonoBehaviour, IDano
         ani.SetBool("walk", false);
         ani.SetBool("attack", false);
         ani.SetTrigger("dead");
+
+        float tiempoDeAnimacionMuerte = 2.0f; // Ajusta el valor según la duración de la animación de muerte
+        Invoke("DestroyObject", tiempoDeAnimacionMuerte);
     }
 
     public void DestroyObject()
     {
         Destroy(gameObject);
     }
-
-    
 }

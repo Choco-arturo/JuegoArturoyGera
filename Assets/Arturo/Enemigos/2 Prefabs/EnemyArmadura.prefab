@@ -158,6 +158,7 @@ GameObject:
   - component: {fileID: 582303631538427648}
   - component: {fileID: 582303631538427651}
   - component: {fileID: 582303631538427676}
+  - component: {fileID: 1814375445}
   m_Layer: 0
   m_Name: EnemyArmadura
   m_TagString: Enemigo
@@ -180,7 +181,7 @@ Transform:
   - {fileID: 582303630116530235}
   - {fileID: 582303630911168085}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &582303631538427678
 SpriteRenderer:
@@ -322,3 +323,15 @@ MonoBehaviour:
   atacando: 0
   rango: {fileID: 582303630116530234}
   Hit: {fileID: 582303630911168084}
+--- !u!114 &1814375445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582303631538427650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cdc32dfbb6ffcc42ab0c611f01ee64c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

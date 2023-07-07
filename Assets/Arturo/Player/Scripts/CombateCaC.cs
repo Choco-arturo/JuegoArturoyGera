@@ -65,12 +65,13 @@ public class CombateCaC : MonoBehaviour
                 
             }
 
+            EnemyBasic enemigo = colisionador.transform.GetComponent<EnemyBasic>();
+            if (enemigo != null && enemigo.IsDead())
+            {
+                break; // Salir del bucle si el enemigo ya está muerto
+            }
 
-            //if(colisionador.CompareTag("Enemigo"))
-            //{
-                //colisionador.transform.GetComponent<Enemy>().TomarDano(danoGolpe);
-            //}
-            
+
         }
         // Establecer realizandoGolpe en false después de realizar el golpe
         
