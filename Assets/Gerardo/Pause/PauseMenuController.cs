@@ -9,7 +9,7 @@ public class PauseMenuController : MonoBehaviour
     private void Update()
     {
         // Verificar si se realiza la entrada correspondiente del control
-        if (playerInput.actions["Pause"].triggered)
+        if (playerInput.actions["Pause"].triggered || Input.GetKeyDown(KeyCode.P))
         {
             // Activar el menú de pausa
             pauseMenu.Pause();
