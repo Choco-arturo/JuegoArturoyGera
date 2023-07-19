@@ -8,6 +8,8 @@ public class EnemySpawnerScript : MonoBehaviour
     public int maxNumberOfEnemies = 5;
     public float spawnRadius = 10f;
 
+
+
     void Start()
     {
         SpawnEnemies();

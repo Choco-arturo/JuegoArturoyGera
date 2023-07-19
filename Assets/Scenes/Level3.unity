@@ -341,7 +341,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1642559752967423182, guid: 6ded76b992a5b4c41b7ea48527b40ab8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.600001
+      value: -1.6000007
       objectReference: {fileID: 0}
     - target: {fileID: 1642559752967423182, guid: 6ded76b992a5b4c41b7ea48527b40ab8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -80841,11 +80841,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7329384447797015715, guid: 1f93caf073460cd47a9f7ec271de8efe, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.633968
+      value: 1.2080618
       objectReference: {fileID: 0}
     - target: {fileID: 7329384447797015715, guid: 1f93caf073460cd47a9f7ec271de8efe, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.32762432
+      value: -0.30480766
       objectReference: {fileID: 0}
     - target: {fileID: 7329384447797015715, guid: 1f93caf073460cd47a9f7ec271de8efe, type: 3}
       propertyPath: m_LocalPosition.z
@@ -102710,6 +102710,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 8369341195540489755, guid: a5d2016d60770644a80e5d067c674666, type: 3}
+  bossPrefab: {fileID: 2137369020449049104, guid: 458eaf1f228397146b3e436ec512c4eb, type: 3}
   randomizeNumberOfEnemies: 0
   minNumberOfEnemies: 3
   maxNumberOfEnemies: 3
@@ -104349,6 +104350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 8369341195540489755, guid: a5d2016d60770644a80e5d067c674666, type: 3}
+  bossPrefab: {fileID: 2137369020449049104, guid: 458eaf1f228397146b3e436ec512c4eb, type: 3}
   randomizeNumberOfEnemies: 0
   minNumberOfEnemies: 3
   maxNumberOfEnemies: 3
