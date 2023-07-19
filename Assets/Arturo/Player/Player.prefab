@@ -5940,7 +5940,7 @@ Transform:
   - {fileID: 1179021149}
   - {fileID: 1059564050}
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4702778205100809076
 SpriteRenderer:
@@ -6037,9 +6037,9 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 2
   m_Material: {fileID: 6200000, guid: 90e65fd4415e6934994e2fc652c0e0ea, type: 2}
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!114 &4702778205100809074
 MonoBehaviour:
@@ -6367,7 +6367,7 @@ PrefabInstance:
     - target: {fileID: 9034334201915962937, guid: 59f68a0b7f1633c4996cb1bc7eb0fb10, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 05398886ba5e1f844a2bb4e3389471ba, type: 3}
+      objectReference: {fileID: 8300000, guid: 57b4847cb9db7134eb87a957518deb06, type: 3}
     - target: {fileID: 9034334201915962938, guid: 59f68a0b7f1633c4996cb1bc7eb0fb10, type: 3}
       propertyPath: m_Name
       value: MusicAudio

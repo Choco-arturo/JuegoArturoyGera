@@ -55374,10 +55374,6 @@ PrefabInstance:
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 41494112}
-    - target: {fileID: 619425307, guid: 461d9113572de1745a1ada03fe2e6894, type: 3}
-      propertyPath: recolectableSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 0743e314ed34bb94f8867d56a13fa3d4, type: 3}
     - target: {fileID: 4702778205100809072, guid: 461d9113572de1745a1ada03fe2e6894, type: 3}
       propertyPath: attackAudioSource
       value: 
@@ -55438,30 +55434,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4702778205100809078, guid: 461d9113572de1745a1ada03fe2e6894, type: 3}
-      propertyPath: m_BodyType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4702778205100809078, guid: 461d9113572de1745a1ada03fe2e6894, type: 3}
-      propertyPath: m_Interpolate
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4702778205100809078, guid: 461d9113572de1745a1ada03fe2e6894, type: 3}
-      propertyPath: m_SleepingMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4702778205100809078, guid: 461d9113572de1745a1ada03fe2e6894, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4702778205100809081, guid: 461d9113572de1745a1ada03fe2e6894, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 9034334202625474681, guid: 461d9113572de1745a1ada03fe2e6894, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 57b4847cb9db7134eb87a957518deb06, type: 3}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 461d9113572de1745a1ada03fe2e6894, type: 3}

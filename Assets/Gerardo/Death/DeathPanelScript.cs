@@ -10,6 +10,7 @@ public class DeathPanelScript : MonoBehaviour
     public CombateJugador combateJugador;
     public AudioClip gameOverMusic;
     private AudioSource audioSource;
+    private float deathDelay = 2f; // Tiempo de retraso para mostrar el panel de muerte (en segundos)
 
     void Start()
     {
@@ -23,13 +24,14 @@ public class DeathPanelScript : MonoBehaviour
     {
         if (combateJugador.vida <= 0)
         {
-            ShowDeathPanel();
-            
+            // Invocar el método para mostrar el panel de muerte después del retraso
+            Invoke("ShowDeathPanel", deathDelay);
         }
     }
 
     public void ShowDeathPanel()
     {
+        PlayGameOverMusic(); // Reproducir música de Game Over
         deathPanel.SetActive(true);
     }
 
@@ -37,6 +39,7 @@ public class DeathPanelScript : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
     public void ReturnToMenu()
     {
         SceneManager.LoadScene("Menu");

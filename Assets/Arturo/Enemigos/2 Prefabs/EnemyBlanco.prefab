@@ -107,7 +107,7 @@ Transform:
   - {fileID: 8369341195814760222}
   - {fileID: 8369341195522952894}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8369341195540489759
 SpriteRenderer:
@@ -201,7 +201,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &8369341195540489756
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -240,6 +240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee8f4558d41e4534193fabf66a30df09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jugador: {fileID: 0}
   enemyData: {fileID: 11400000, guid: 8819a085b2bc1dd4c8b447ccbb0d6ad6, type: 2}
   rutina: 0
   cronometro: 0
@@ -247,6 +248,7 @@ MonoBehaviour:
   direccion: 0
   target: {fileID: 0}
   atacando: 0
+  puedeAtacar: 1
   rango: {fileID: 8369341195814760221}
   Hit: {fileID: 8369341195522952893}
 --- !u!1 &8369341195814760221

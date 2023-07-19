@@ -12,6 +12,7 @@ public class CombateJugador : MonoBehaviour
     public AudioSource musicAudioSource;
 
     private Animator animator;
+    private float tiempoEsperaDestruccion = 2f; // Tiempo de espera antes de destruir al jugador (en segundos)
 
     private void Start()
     {
@@ -28,6 +29,7 @@ public class CombateJugador : MonoBehaviour
         {
             // Reproducir animación de muerte
             animator.SetTrigger("dead");
+            StartCoroutine(DestruirJugador()); // Iniciar Coroutine para destruir el jugador después de un tiempo
         }
         else
         {
@@ -47,7 +49,14 @@ public class CombateJugador : MonoBehaviour
 
             // Reproducir animación de muerte
             animator.SetTrigger("dead");
+            StartCoroutine(DestruirJugador()); // Iniciar Coroutine para destruir el jugador después de un tiempo
         }
+    }
+
+    private IEnumerator DestruirJugador()
+    {
+        yield return new WaitForSeconds(tiempoEsperaDestruccion);
+        Destroy(gameObject);
     }
 
     public GameObject[] vidas;
