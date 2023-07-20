@@ -2161,41 +2161,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Particle System (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 8593717345508074837, guid: 078e8f265e1702b469734357e525714b, type: 3}
-      propertyPath: m_SortingOrder
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8593717345508074838, guid: 078e8f265e1702b469734357e525714b, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8593717345508074838, guid: 078e8f265e1702b469734357e525714b, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.b
-      value: 0.3254902
-      objectReference: {fileID: 0}
-    - target: {fileID: 8593717345508074838, guid: 078e8f265e1702b469734357e525714b, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.6039216
-      objectReference: {fileID: 0}
-    - target: {fileID: 8593717345508074838, guid: 078e8f265e1702b469734357e525714b, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.9647059
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 8593717345508074839, guid: 078e8f265e1702b469734357e525714b, type: 3}
       propertyPath: m_RootOrder
       value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8593717345508074839, guid: 078e8f265e1702b469734357e525714b, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 8593717345508074839, guid: 078e8f265e1702b469734357e525714b, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8593717345508074839, guid: 078e8f265e1702b469734357e525714b, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8593717345508074839, guid: 078e8f265e1702b469734357e525714b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3813,18 +3785,6 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7002505926705775256, guid: c52c658863d60b548869d74feff18dcb, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 13.625
-      objectReference: {fileID: 0}
-    - target: {fileID: 7002505926705775256, guid: c52c658863d60b548869d74feff18dcb, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7002505926705775256, guid: c52c658863d60b548869d74feff18dcb, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7002505926705775256, guid: c52c658863d60b548869d74feff18dcb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.39343047
       objectReference: {fileID: 0}
@@ -3866,27 +3826,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7002505926705775257, guid: c52c658863d60b548869d74feff18dcb, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7002505926705775257, guid: c52c658863d60b548869d74feff18dcb, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.b
-      value: 0.22761661
-      objectReference: {fileID: 0}
-    - target: {fileID: 7002505926705775257, guid: c52c658863d60b548869d74feff18dcb, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.43938434
-      objectReference: {fileID: 0}
-    - target: {fileID: 7002505926705775257, guid: c52c658863d60b548869d74feff18dcb, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.8773585
-      objectReference: {fileID: 0}
-    - target: {fileID: 7002505926705775258, guid: c52c658863d60b548869d74feff18dcb, type: 3}
-      propertyPath: m_SortingOrder
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7002505926705775258, guid: c52c658863d60b548869d74feff18dcb, type: 3}
-      propertyPath: m_RenderAlignment
-      value: 0
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 7002505926705775259, guid: c52c658863d60b548869d74feff18dcb, type: 3}
       propertyPath: m_Name
