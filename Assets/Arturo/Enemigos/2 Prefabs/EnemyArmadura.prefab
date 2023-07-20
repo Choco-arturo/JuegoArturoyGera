@@ -181,7 +181,7 @@ Transform:
   - {fileID: 582303630116530235}
   - {fileID: 582303630911168085}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &582303631538427678
 SpriteRenderer:
@@ -272,7 +272,7 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
-  m_Interpolate: 2
+  m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
@@ -314,6 +314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee8f4558d41e4534193fabf66a30df09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jugador: {fileID: 0}
   enemyData: {fileID: 11400000, guid: d127182ecdaf93a4a8412188fdf73fe4, type: 2}
   rutina: 0
   cronometro: 0
@@ -321,6 +322,7 @@ MonoBehaviour:
   direccion: 0
   target: {fileID: 0}
   atacando: 0
+  puedeAtacar: 1
   rango: {fileID: 582303630116530234}
   Hit: {fileID: 582303630911168084}
 --- !u!114 &1814375445

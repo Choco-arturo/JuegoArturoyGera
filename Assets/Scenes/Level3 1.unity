@@ -101980,6 +101980,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player2
       objectReference: {fileID: 0}
+    - target: {fileID: 2070385842892356872, guid: 3ceebd1d3651df04bbfaff9998e938cf, type: 3}
+      propertyPath: attackAudioSource
+      value: 
+      objectReference: {fileID: 1911074415}
     - target: {fileID: 2070385842892356877, guid: 3ceebd1d3651df04bbfaff9998e938cf, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -106960,6 +106964,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ca3f39277a909d4f9a7e0bd9d77c1c8, type: 3}
+--- !u!82 &1911074415 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1553689235211046650, guid: 2ca3f39277a909d4f9a7e0bd9d77c1c8, type: 3}
+  m_PrefabInstance: {fileID: 1911074414}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1923985031
 GameObject:
   m_ObjectHideFlags: 0
