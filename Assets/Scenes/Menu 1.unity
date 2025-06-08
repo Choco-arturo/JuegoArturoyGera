@@ -2161,6 +2161,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Particle System (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8593717345508074836, guid: 078e8f265e1702b469734357e525714b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8593717345508074838, guid: 078e8f265e1702b469734357e525714b, type: 3}
       propertyPath: InitialModule.startSize.scalar
       value: 0.03
@@ -3831,6 +3835,10 @@ PrefabInstance:
     - target: {fileID: 7002505926705775259, guid: c52c658863d60b548869d74feff18dcb, type: 3}
       propertyPath: m_Name
       value: Particle System
+      objectReference: {fileID: 0}
+    - target: {fileID: 7002505926705775259, guid: c52c658863d60b548869d74feff18dcb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
